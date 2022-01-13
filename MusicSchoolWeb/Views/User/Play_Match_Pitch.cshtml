@@ -1,0 +1,155 @@
+﻿
+@{
+    ViewBag.Title = "Play_Match_Pitch";
+    Layout = "~/Views/Shared/HomeLayout.cshtml";
+}
+<main id="main">
+    <!-- ======= Blog Header ======= -->
+    <div class="header-bg page-area">
+        <div class="container position-relative">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="slider-content text-center">
+                        <div class="header-bottom">
+                            <div class="layer2">
+                                <h1 class="title2">Exercise task</h1>
+                            </div>
+                            <div class="layer3">
+                                <h2 class="title3">Music Learning Online Portal</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!-- End Blog Header -->
+    <!-- ======= Blog Page ======= -->
+    <div class="blog-page area-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <div class="sub-category-list-section">
+                        <h4><b>A note on relative pitch: </b></h4>
+                        <p>
+                            We will again be using the notes C and D, but now, rather than
+                            repeating what you hear in the module on pitch, you will need to
+                            translate (and sing!) the musical notation on the screen.
+                        </p>
+
+                        <p>
+                            As with the last exercise, there are four possible patterns. Before each
+                            exercise, you will hear the tone of the first pitch.
+                        </p>
+
+                        <p>
+                            This is our first exercise where we are really working within a 'key. Key
+                            in this regard simply implies that one tone is more common or
+                            important than another. When learning to hear relative to a kj., most
+                            students leam some type of system for both identifying and singing the
+                            notated pitches. These systems include movable-do solmimfion,
+                            fixed-do solmization scale degrees etc. Research on these systems
+                            indicates that they all have merit and that using any one of these
+                            systems is better than having no system at all.
+                            You can change the 'Tone naming- used in EarMaster in the Exercise
+                            options (the button with the 3 horizontal lines in the top right corner of
+                            the exercise screen). If you are not sure which system to use, start by
+                            trying the “Movable-DO" system.
+
+                            If you choose to use movable-do, sing all Cs in these exercises as ..Do°
+                            and all D's as "Re".
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <div class="row text-center">
+                        <div class="col-md-12">
+                            <h4>Exercise task</h4>
+                            <p>Motes are played - you transcribe them.</p>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="sub-category-list-section">
+                                <div style="text-align: center;overflow-y: scroll;height: 400px;">
+                                    @*<br>*@
+                                    @*<video id="video1" width="420">
+                                            <source src="~/assets/video/expercise_video.mp4" type="video/mp4">
+                                            Your browser does not support HTML5 video.
+                                        </video>*@
+                                    <table id="dataTable">
+                                        <thead>
+                                            <tr>
+                                                <th>Tune Name</th>
+                                                <th>Play Section</th>
+
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var item in Model)
+                                            {
+                                                <tr>
+
+                                                    <td>@item.Name</td>
+
+                                                    <td>
+                                                        <audio controls>
+                                                            <source src="@Url.Content(@item.FilePath)" type="audio/ogg">
+                                                        </audio>
+                                                    </td>
+
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    @*<div class="row">
+                        <div class="col-md-12 text-center">
+                            <button class="btn btn-primary" onclick="playPause()">New Example</button>
+                            <button class="btn btn-primary" onclick="playPause()">Play/Pause</button>
+                            <button class="btn btn-primary" onclick="makeBig()">Big</button>
+                            <button class="btn btn-primary" onclick="makeSmall()">Small</button>
+                            <button class="btn btn-primary" onclick="makeNormal()">Normal</button>
+                        </div>
+                    </div>*@
+                </div>
+            </div>
+            <div class="row" style="float:right;">
+                <div class="col-md-12 bx-pull-left" >
+                    <a href="/User/Piano" class="btn btn-warning float-right begin-btn">Begin > </a>
+                </div>
+            </div>
+        </div>
+    </div><!-- End Blog Page -->
+
+</main><!-- End #main -->
+
+<script src="~/assets/js/main.js"></script>
+<script>
+    // alert("ok");
+    var myVideo = document.getElementById("video1");
+    function playPause() {
+        if (myVideo.paused)
+            myVideo.play();
+        else
+            myVideo.pause();
+    }
+
+    function makeBig() {
+        myVideo.width = 460;
+    }
+
+    function makeSmall() {
+        myVideo.width = 320;
+    }
+
+    function makeNormal() {
+        myVideo.width = 420;
+    }
+</script>

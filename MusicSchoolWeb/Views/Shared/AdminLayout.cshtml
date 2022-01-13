@@ -1,0 +1,197 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+
+    <link href="/assets/img/favicon.png" rel="icon">
+    <link href="/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700|Raleway:300,400,400i,500,500i,700,800,900" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="~/assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+    <link href="~/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="~/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="~/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="~/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link href="~/assets/css/style.css" rel="stylesheet">
+    <link href="~/assets/css/piano_style.css" rel="stylesheet" />
+    <style>
+        .about-move {
+            background-color: #3ec1d5;
+            padding: 15px;
+            outline: 2px solid gray;
+            border: 1px solid white;
+            box-shadow: 0px 0px 2px 3px #a5a1a1;
+            margin-bottom: 20px;
+        }
+
+            .about-move i {
+                color: white;
+            }
+
+            .about-move h5 {
+                color: white;
+            }
+
+        .single-services:hover h4 {
+            color: #282626;
+        }
+
+        .services-icon {
+            width: 70px;
+            height: 70px;
+            background-color: #333333;
+            border-radius: 50px;
+            padding: 15px;
+        }
+
+        .about-move:hover {
+            background-color: #333333;
+        }
+
+            .about-move:hover .services-icon {
+                width: 70px;
+                height: 70px;
+                color: black;
+                background-color: white;
+                border-radius: 50px;
+                padding: 15px;
+            }
+
+            .about-move:hover i {
+                color: black !important;
+            }
+    </style>
+</head>
+<body>
+    <header id="header" class="fixed-top d-flex align-items-center">
+        <div class="container d-flex justify-content-between">
+
+            <div class="logo">
+                <h1><a href="/"><span>Music</span>Learning</a></h1>
+            </div>
+
+            <nav id="navbar" class="navbar">
+                <ul>
+                    <li><a class="nav-link scrollto active" href="/">Home</a></</li>
+                    <li><a class="nav-link scrollto" href="~/Home/UploadAudio">Upload Audio</a></li>
+
+                    <li><a href="/Account/Logout">Logout</a></li>
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav><!-- .navbar -->
+
+        </div>
+        <input type="hidden" name="User" id="User" value="@Session["User'"].ToString()" />
+    </header><!-- End Header -->
+    <div>
+        @RenderBody()
+    </div>
+    <footer>
+        <div class="footer-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="footer-content">
+                            <div class="footer-head">
+                                <div class="footer-logo">
+                                    <h2><span>Music</span>Learning</h2>
+                                </div>
+
+                                <p>Music learning is enhanced when teachers know students' potential to achieve in music and teach systematically to individual differences.</p>
+                                <div class="footer-icons">
+                                    <ul>
+                                        <li>
+                                            <a href="#"><i class="bi bi-facebook"></i></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><i class="bi bi-twitter"></i></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><i class="bi bi-instagram"></i></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><i class="bi bi-linkedin"></i></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end single footer -->
+                    <div class="col-md-4">
+                        <div class="footer-content">
+                            <div class="footer-head">
+                                <h4>information</h4>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.
+                                </p>
+                                <div class="footer-contacts">
+                                    <p><span>Tel:</span> +123 456 789</p>
+                                    <p><span>Email:</span> contact@example.com</p>
+                                    <p><span>Working Hours:</span> 9am-5pm</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end single footer -->
+                    <div class="col-md-4">
+                        <div class="footer-content">
+                            <div class="footer-head">
+                                <h4>Instagram</h4>
+                                <div class="flicker-img">
+                                    <a href="#"><img src="/assets/img/portfolio/1.jpg" alt=""></a>
+                                    <a href="#"><img src="/assets/img/portfolio/2.jpg" alt=""></a>
+                                    <a href="#"><img src="/assets/img/portfolio/3.jpg" alt=""></a>
+                                    <a href="#"><img src="/assets/img/portfolio/4.jpg" alt=""></a>
+                                    <a href="#"><img src="/assets/img/portfolio/5.jpg" alt=""></a>
+                                    <a href="#"><img src="/assets/img/portfolio/6.jpg" alt=""></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-area-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="copyright text-center">
+                            <p>
+                                &copy; Copyright <strong>Music-Learning</strong>. All Rights Reserved
+                            </p>
+                        </div>
+                        <div class="credits">
+                            Designed by <a href="#">NextOlive</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer><!-- End  Footer -->
+    <div id="preloader"></div>
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    <!-- Vendor JS Files -->
+    <script src="~/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="~/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="~/assets/vendor/php-email-form/validate.js"></script>
+    <script src="~/assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="~/assets/js/piano_main.js"></script>
+    <!-- Template Main JS File -->
+    <script src="~/assets/js/main.js"></script>
+    <script>
+        //Session["User'"]User
+        $(document).ready(function () {
+            if ($("#User").val == "admin") {
+
+            }
+        })
+    </script>
+</body>
+</html>
