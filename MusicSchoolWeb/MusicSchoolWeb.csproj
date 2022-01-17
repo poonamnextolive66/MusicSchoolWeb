@@ -151,6 +151,9 @@
     <Compile Include="Models\Compare2FilesModel.cs" />
     <Compile Include="Models\FileAttrib.cs" />
     <Compile Include="Models\FileAttribConverter.cs" />
+    <Compile Include="Models\Lesson.cs" />
+    <Compile Include="Models\ManageData.cs" />
+    <Compile Include="Models\SqlData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -329,6 +332,8 @@
     <Content Include="Views\Home\UploadAudio.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Shared\AdminLayout.cshtml" />
+    <Content Include="Views\Admin\Lesson.cshtml" />
+    <Content Include="Views\Admin\Topics.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -345,6 +350,12 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BusinessLayer\BusinessLayer.csproj">
+      <Project>{34e30001-e2c5-4ae0-8c07-d6728dbe2c68}</Project>
+      <Name>BusinessLayer</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
