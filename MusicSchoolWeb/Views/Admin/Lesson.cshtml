@@ -23,26 +23,6 @@
 </head>
 <body>
     <main id="main">
-
-        <!-- ======= Blog Header ======= -->
-        @*<div class="header-bg page-area">
-                <div class="container position-relative">
-                    <div class="row">
-                        <div class="col-md-12 col-sm-12 col-xs-12">
-                            <div class="slider-content text-center">
-                                <div class="header-bottom">
-                                    <div class="layer2">
-                                        <h1 class="title2">SONG UPLOADER </h1>
-                                    </div>
-                                    <div class="layer3">
-                                        <h2 class="title3">Music Learnig Online Portal</h2>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>*@<!-- End Blog Header -->
         <div id="about" class="about-area area-padding">
             <div class="container">
                 <div class="row">
@@ -96,7 +76,6 @@
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <h4 class="modal-title">Add New Lesson</h4>
-                                                    @*<button type="button" class="close" data-dismiss="modal">×</button>*@
                                                 </div>
                                                 <div class="modal-body">
                                                     @using (Html.BeginForm("AddLesson", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
@@ -128,7 +107,7 @@
                                         <tr>
                                             <th>ID</th>
                                             <th>Lesson</th>
-                                            <th>Action</th>
+                                            @*<th>Action</th>*@
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -138,7 +117,7 @@
                                                 <td>@item.Id</td>
                                                 <td>@item.LessonName</td>
                                                 
-                                                <td>@Html.ActionLink("Delete", "Delete", new { i = item.Id, filenames = item.LessonName })</td>
+                                               @* <td>@Html.ActionLink("Delete", "Delete", new { i = item.Id, filenames = item.LessonName })</td>*@
                                             </tr>
                                         }
                                     </tbody>

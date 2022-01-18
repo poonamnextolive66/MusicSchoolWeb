@@ -26,7 +26,7 @@ namespace MusicSchoolWeb.Models
                     foreach (DataRow rdr in dtContainer.Rows)
                     {
                         Lesson topic = new Lesson();
-                        topic.Id = Convert.ToInt32(rdr["Id"]);
+                        topic.LessonId = Convert.ToInt32(rdr["Id"]);
                         topic.LessonName = rdr["LessionName"].ToString();
 
                         retval.Add(topic);

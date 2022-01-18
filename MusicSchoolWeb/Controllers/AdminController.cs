@@ -71,7 +71,6 @@ namespace MusicSchoolWeb.Controllers
                 {
 
                 }
-                
             }
             return View();
         }
@@ -89,7 +88,6 @@ namespace MusicSchoolWeb.Controllers
             using (SqlConnection con = new SqlConnection(CS))
             {
                 SqlCommand cmd = new SqlCommand(Query, con);
-                //cmd.CommandType = CommandType.StoredProcedure;
                 con.Open();
                 SqlDataReader rdr = cmd.ExecuteReader();
                 if (rdr.RecordsAffected == 1)
