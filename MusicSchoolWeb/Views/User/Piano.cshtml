@@ -272,7 +272,7 @@
                     <tr>
                         <td>
                             <audio id="audio" controls>
-                                <source src="" id="src" />
+                                <source src="~/AudioFiles/Lesson%201-3.mp3" type="audio/mpeg" id="src" />
                             </audio>
                         </td>
 
@@ -478,6 +478,8 @@
 
     $(document).ready(function () {
         $("#open").on("click", function () {
+            var data = $("#recordingsList").val();
+            alert(data);
             $("body").addClass("open");
         });
         $(".close").on("click", function () {

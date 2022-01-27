@@ -1,0 +1,6 @@
+D:\Poonam Yadav\Projects\Music Git\MusicSchoolWeb\BusinessLayer\bin\Release\BusinessLayer.dll
+D:\Poonam Yadav\Projects\Music Git\MusicSchoolWeb\BusinessLayer\bin\Release\BusinessLayer.pdb
+D:\Poonam Yadav\Projects\Music Git\MusicSchoolWeb\BusinessLayer\obj\Release\BusinessLayer.csproj.AssemblyReference.cache
+D:\Poonam Yadav\Projects\Music Git\MusicSchoolWeb\BusinessLayer\obj\Release\BusinessLayer.csproj.CoreCompileInputs.cache
+D:\Poonam Yadav\Projects\Music Git\MusicSchoolWeb\BusinessLayer\obj\Release\BusinessLayer.dll
+D:\Poonam Yadav\Projects\Music Git\MusicSchoolWeb\BusinessLayer\obj\Release\BusinessLayer.pdb

@@ -235,4 +235,6 @@ D:\Poonam Yadav\Projects\Music Git\MusicSchoolWeb\MusicSchoolWeb\obj\Debug\Music
 D:\Poonam Yadav\Projects\Music Git\MusicSchoolWeb\MusicSchoolWeb\obj\Debug\MusicSchoolWeb.csproj.CoreCompileInputs.cache
 D:\Poonam Yadav\Projects\Music Git\MusicSchoolWeb\MusicSchoolWeb\obj\Debug\MusicSchoolWeb.dll
 D:\Poonam Yadav\Projects\Music Git\MusicSchoolWeb\MusicSchoolWeb\obj\Debug\MusicSchoolWeb.pdb
+D:\Poonam Yadav\Projects\Music Git\MusicSchoolWeb\MusicSchoolWeb\bin\System.Data.SqlClient.dll
+D:\Poonam Yadav\Projects\Music Git\MusicSchoolWeb\MusicSchoolWeb\bin\System.Data.SqlClient.xml
 D:\Poonam Yadav\Projects\Music Git\MusicSchoolWeb\MusicSchoolWeb\obj\Debug\MusicSchoolWeb.csproj.CopyComplete

@@ -1,0 +1,139 @@
+﻿
+@{
+    ViewBag.Title = "Topics";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+@using MusicSchoolWeb.Models;
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>UploadAudio</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="~/scripts/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css" />
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
+</head>
+<body>
+    <main id="main">
+        <div id="about" class="about-area area-padding">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="section-headline text-center">
+                            <h2>Add New Topic</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="well-middle">
+                            <div class="single-well">
+                                <div class="row">
+                                    @if (TempData["msg"] != null)
+                                    {
+                                        if (TempData["msg"].ToString() == "1")
+                                        {
+                                            <div class="alert alert-danger">
+                                                <p>This Topic Already Exists in the Playlist !</p>
+                                            </div>
+                                        }
+                                    }
+                                    @if (TempData["msgdelete"] != null)
+                                    {
+                                        if (TempData["msgdelete"].ToString() == "Yes")
+                                        {
+                                            <div class="alert alert-success">
+                                                <p>Selected Topic Has Been Successfully Deleted !</p>
+                                            </div>
+                                        }
+                                    }
+                                    @if (TempData["msgsuccess"] != null)
+                                    {
+                                        if (TempData["msgsuccess"].ToString() == "Yes")
+                                        {
+                                            <div class="alert alert-warning">
+                                                <p>Topic Have Been Successfully Uploaded !</p>
+                                            </div>
+                                        }
+                                    }
+                                    <button type="button" class="btn btn-primary rounded-0" data-toggle="modal" data-target="#myModal">
+                                        <i class="fa fa-plus-circle"></i> Add New
+                                    </button>
+
+                                    <div class="modal fade" id="myModal">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h4 class="modal-title">Add New Topic</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    @using (Html.BeginForm("AddTopic", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                                    {
+                                                        <div class="form-group">
+                                                            <label>Lesson:</label>
+                                                            <div class="input-group">
+                                                                <div class="custom-file">
+                                                                    <select name="LessonId" id="LessonId">
+                                                                        @foreach (Lesson src in ViewBag.lesson)
+                                                                        {
+                                                                            <option value=" @src.LessonId"> @src.LessonName</option>
+                                                                        }
+                                                                    </select>
+                                                                    <label class="custom-file-label"></label>
+                                                                </div>
+                                                                <div class="custom-file">
+                                                                    <label>Topic Name</label>
+                                                                    <input type="text" id="TopicName" name="TopicName" class="custom-file-input" />
+                                                                    <label class="custom-file-label"></label>
+                                                                </div>
+                                                                <div class="input-group-append">
+                                                                    <input type="submit" id="btnUpload" class="btn btn-secondary" value="Add" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    }
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-danger" data-dismiss="modal">&nbsp;&nbsp;X&nbsp;&nbsp;</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <table id="dataTable" class="table table-bordered table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Lesson</th>
+                                            <th>Topic Name</th>
+                                            @*<th>Action</th>*@
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model)
+                                        {
+                                            <tr>
+                                                <td>@item.Id</td>
+                                                <td>@item.LessonName</td>
+                                                <td>@item.TopicName</td>
+                                              @*  <td>@Html.ActionLink("Delete", "Delete", new { i = item.Id, filenames = item.LessonName })</td>*@
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
+
+

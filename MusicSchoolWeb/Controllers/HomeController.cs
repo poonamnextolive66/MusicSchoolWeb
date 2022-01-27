@@ -107,12 +107,15 @@ namespace MusicSchoolWeb.Controllers
                     string CS = ConfigurationManager.ConnectionStrings["DBCS"].ConnectionString;
                     using (SqlConnection con = new SqlConnection(CS))
                     {
-                        SqlCommand cmd = new SqlCommand("spAddNewAudioFile", con);
-                        cmd.CommandType = CommandType.StoredProcedure;
+                        string path = "~/AudioFiles/" + fileName;
+                        string query = "insert into AudioFiles values('" + fileName + "','" + fileSize + "','" + path + "','Lesson - 1')";
+                        SqlCommand cmd = new SqlCommand(query, con);
+                        //SqlCommand cmd = new SqlCommand("spAddNewAudioFile", con);
+                        //cmd.CommandType = CommandType.StoredProcedure;
                         con.Open();
-                        cmd.Parameters.AddWithValue("@Name", fileName);
-                        cmd.Parameters.AddWithValue("@FileSize", Size);
-                        cmd.Parameters.AddWithValue("FilePath", "~/AudioFiles/" + fileName);
+                        //cmd.Parameters.AddWithValue("@Name", fileName);
+                        //cmd.Parameters.AddWithValue("@FileSize", Size);
+                        //cmd.Parameters.AddWithValue("@FilePath", "~/AudioFiles/" + fileName);
                         cmd.ExecuteNonQuery();
                         TempData["msgsuccess"] = "Yes";
                     }

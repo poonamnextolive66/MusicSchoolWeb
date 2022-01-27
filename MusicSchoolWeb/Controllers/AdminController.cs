@@ -29,9 +29,14 @@ namespace MusicSchoolWeb.Controllers
         }
         public ActionResult Sub_Category()
         {
+            List<Lesson> less = new List<Lesson>();
+            List<Topic> topic = new List<Topic>();
+            less = manage.GetLesson();
+            ViewBag.lasson = less;
+            topic = manage.GetTopictbl();
+            ViewBag.topic = topic;
             return View();
         }
-
         public ActionResult UploadAudio()
         {
             return View();
@@ -98,8 +103,28 @@ namespace MusicSchoolWeb.Controllers
             }
             return View();
         }
-
-
-
+       public ActionResult DeleteTopic(string id)
+        {
+            bool status = false;
+            status = manage.deletetopic(id);
+            if (status == true)
+            {
+                TempData["msgdelete"] = "Yes";
+                return RedirectToAction("Topics", "Admin");
+            }
+            return View();
         }
+        public ActionResult DeleteLession(string id)
+        {
+            bool status = false;
+            status = manage.deletetopic(id);
+            if (status == true)
+            {
+                TempData["msgdelete"] = "Yes";
+                return RedirectToAction("Topics", "Admin");
+            }
+            return RedirectToAction("Topics", "Admin");
+        }
+
+    }
     }

@@ -21,7 +21,6 @@ namespace MusicSchoolWeb.Controllers
         {
             return View();
         }
-
         public ActionResult Play_Match_Pitch()
         {
             using (SqlConnection con = new SqlConnection(CS))
@@ -50,15 +49,12 @@ namespace MusicSchoolWeb.Controllers
         {
             FileInfo[] obj = ReadFiles();
             ViewBag.song = obj;
-
             return View();
-            
         }
         private FileInfo[] ReadFiles()
         {
             FileInfo[] files = null;
             string path1 = Path.Combine(Server.MapPath(@"/AudioFiles/"));
-
             if (System.IO.Directory.Exists(path1))
             {
                 DirectoryInfo directory = new DirectoryInfo(path1);
@@ -73,7 +69,6 @@ namespace MusicSchoolWeb.Controllers
             }
             return files;
         }
-
         [HttpPost]
         public ActionResult UploadFiles()
         {
@@ -83,13 +78,11 @@ namespace MusicSchoolWeb.Controllers
             for (int i = 0; i < files.Count; i++)
             {
                 HttpPostedFileBase file = files[i];
-
                 file.SaveAs(path2 + file.FileName);
                 string path1 = path2 + file.FileName;
                 audiobyte2 = System.IO.File.ReadAllBytes(path1);
             }
             FileInfo[] fils = this.ReadFiles();
-
             return Json(files.Count + " Files Uploaded!");
         }
     }
