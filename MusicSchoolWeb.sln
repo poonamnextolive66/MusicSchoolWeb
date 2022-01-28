@@ -5,8 +5,6 @@ VisualStudioVersion = 16.0.31729.503
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicSchoolWeb", "MusicSchoolWeb\MusicSchoolWeb.csproj", "{8319D7C3-4567-462D-B9A2-7B98CFD798E9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLayer", "BusinessLayer\BusinessLayer.csproj", "{34E30001-E2C5-4AE0-8C07-D6728DBE2C68}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,10 +15,6 @@ Global
 		{8319D7C3-4567-462D-B9A2-7B98CFD798E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8319D7C3-4567-462D-B9A2-7B98CFD798E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8319D7C3-4567-462D-B9A2-7B98CFD798E9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{34E30001-E2C5-4AE0-8C07-D6728DBE2C68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{34E30001-E2C5-4AE0-8C07-D6728DBE2C68}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{34E30001-E2C5-4AE0-8C07-D6728DBE2C68}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{34E30001-E2C5-4AE0-8C07-D6728DBE2C68}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

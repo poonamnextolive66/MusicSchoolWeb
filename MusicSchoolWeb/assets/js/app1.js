@@ -82,6 +82,7 @@ function startRecording() {
 		recordButton.disabled = false;
 		stopButton.disabled = true;
 		pauseButton.disabled = true
+
 	});
 }
 
@@ -119,26 +120,35 @@ function stopRecording() {
 	//create the wav blob and pass it on to createDownloadLink
 	rec.exportWAV(createDownloadLink);
 }
-
+debugger
 function createDownloadLink(blob) {
 
 	var url = URL.createObjectURL(blob);
 	//var url = "http://localhost/TestPiano/download"
 	var au = document.createElement('audio');
-	var li = document.createElement('li');
+	//au.id = "divaudio";
+	/*	var li = document.createElement('li');*/
+	var li = document.createElement('td');
 	var link = document.createElement('a');
-
+	//g = document.createElement('div');
+	
 	//name of .wav file to use during upload and download (without extendion)
 	var filename = new Date().toISOString().slice(0, 16).replace('T', ' ')
 	//var filename = "C: /Users/user/Prashant_Pal/TestPiano\download";
-
 	//add controls to the <audio> element
+	var input = document.createElement('input');
+	input.type = "hidden";
+	input.id = "inputaudio";
+	input.value = url;
+	//...    
+	li.appendChild(input);
+	au.className = "poonam";
 	au.controls = true;
 	au.src = url;
-
 	//save to disk link
-	link.href = url;
-	link.download = filename + ".wav"; //download forces the browser to donwload the file using the  filename
+	//link.href = url;
+	//link.download = filename + ".wav"; //download forces the browser to donwload the file using the  filename
+	
 	//a.setAttribute("download", fileName);
 	//link.setAttribute('download', filename);
 
@@ -174,7 +184,6 @@ function createDownloadLink(blob) {
 
 	//add the li element to the ol
 	recordingsList.appendChild(li);
-
 	for (let link of document.querySelectorAll('a[download]')) {
 		link.click();
 	}

@@ -117,13 +117,13 @@ namespace MusicSchoolWeb.Controllers
         public ActionResult DeleteLession(string id)
         {
             bool status = false;
-            status = manage.deletetopic(id);
+            status = manage.deletelession(id);
             if (status == true)
             {
                 TempData["msgdelete"] = "Yes";
-                return RedirectToAction("Topics", "Admin");
+                return RedirectToAction("Lesson", "Admin");
             }
-            return RedirectToAction("Topics", "Admin");
+            return RedirectToAction("Lesson", "Admin");
         }
 
     }

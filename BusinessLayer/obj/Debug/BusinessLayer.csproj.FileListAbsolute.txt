@@ -1,5 +1,0 @@
-D:\Poonam Yadav\Projects\Music Git\MusicSchoolWeb\BusinessLayer\bin\Debug\BusinessLayer.dll
-D:\Poonam Yadav\Projects\Music Git\MusicSchoolWeb\BusinessLayer\bin\Debug\BusinessLayer.pdb
-D:\Poonam Yadav\Projects\Music Git\MusicSchoolWeb\BusinessLayer\obj\Debug\BusinessLayer.csproj.CoreCompileInputs.cache
-D:\Poonam Yadav\Projects\Music Git\MusicSchoolWeb\BusinessLayer\obj\Debug\BusinessLayer.dll
-D:\Poonam Yadav\Projects\Music Git\MusicSchoolWeb\BusinessLayer\obj\Debug\BusinessLayer.pdb

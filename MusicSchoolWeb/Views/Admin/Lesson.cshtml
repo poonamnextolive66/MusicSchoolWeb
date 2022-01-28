@@ -108,14 +108,18 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @{
+                                            int i = 1;
+                                        }
                                         @foreach (var item in Model)
                                         {
                                             <tr>
-                                                <td>@item.Id</td>
+                                                <td>@i</td>
                                                 <td>@item.LessonName</td>
 
                                                 <td>@Html.ActionLink("Delete", "DeleteLession", new { id = item.Id })</td>
                                             </tr>
+                                            i++;
                                         }
                                     </tbody>
                                 </table>

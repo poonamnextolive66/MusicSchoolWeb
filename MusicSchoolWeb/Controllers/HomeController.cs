@@ -14,6 +14,8 @@ using System.Text;
 using MusicSchoolWeb.Models;
 using SoundFingerprinting;
 using SoundFingerprinting.Tests;
+using System.Reflection;
+
 namespace MusicSchoolWeb.Controllers
 {
     public class HomeController : Controller
@@ -39,7 +41,7 @@ namespace MusicSchoolWeb.Controllers
         [HttpGet]
         public ActionResult UploadAudio()
         {
-                       
+
             using (SqlConnection con = new SqlConnection(CS))
             {
                 SqlCommand cmd = new SqlCommand("spGetAllAudioFile", con);
@@ -123,7 +125,7 @@ namespace MusicSchoolWeb.Controllers
                 TempData["msg"] = counter;
             }
             return RedirectToAction("UploadAudio");
-        }                                          
+        }
 
         [HttpGet]
         private List<FileAttrib> GetFiles(DirectoryInfo dinfo)
@@ -160,11 +162,11 @@ namespace MusicSchoolWeb.Controllers
             return RedirectToAction("UploadAudio");
         }
         [HttpPost]
-        public ActionResult CompareAudio(FormCollection fc)
+        public JsonResult CompareAudio(string au1, string au2)
         {
-           
-               string FirstFile= fc["cars"];
-               string SecondFle = Path.GetFileName(fc["cars2"]);
+            var msg = "The Tune is not Matched and Returned False. !";
+            string FirstFile = au1;
+            string SecondFle = au2;
 
             if (FirstFile != null && SecondFle != null)
             {
@@ -177,10 +179,11 @@ namespace MusicSchoolWeb.Controllers
                 string OldFiles = string.Empty;
                 int counter = 0;
 
-               //  fileupload.SaveAs(Server.MapPath("~/RawFiles/" + fileName));
-
+                //  fileupload.SaveAs(Server.MapPath("~/RawFiles/" + fileName));
+                //SecondFle = SecondFle.Replace(".mp3", "");
+                //SecondFle = "Lesson 1-3.mp3";
                 // Code for Extracting Hash Value of Currently Uploaded File Starts 
-                using (var stream = new BufferedStream(System.IO.File.OpenRead(Server.MapPath("~/UploadAudio/" + SecondFle)), 1200000))
+                using (var stream = new BufferedStream(System.IO.File.OpenRead(Server.MapPath("~/AudioFiles/" + SecondFle)), 1200000))
                 {
                     SHA256Managed sha = new SHA256Managed();
                     byte[] checksum = sha.ComputeHash(stream);
@@ -202,14 +205,17 @@ namespace MusicSchoolWeb.Controllers
                     }
 
                     if (Hash_Value_Of_First_File == Hash_Value_Of_All_Files_One_By_One)
-                        counter = 1;
+                    {
+
+                    }
+                    //msg = "The Tune is Matched and Returned True. !";
                 }// Code for Extracting Hash Value of all files present in the folder to match with the new one Ends
 
                 TempData["CompareMessage"] = counter;
             }
+                return Json(new { msg  });
+            }
 
-            return RedirectToAction("Piano", "User");
         }
-
     }
-}
+

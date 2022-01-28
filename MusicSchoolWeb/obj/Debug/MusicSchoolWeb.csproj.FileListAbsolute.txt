@@ -208,10 +208,10 @@ D:\Poonam Yadav\Projects\Music Git\MusicSchoolWeb\MusicSchoolWeb\bin\roslyn\vbc.
 D:\Poonam Yadav\Projects\Music Git\MusicSchoolWeb\MusicSchoolWeb\bin\roslyn\VBCSCompiler.exe
 D:\Poonam Yadav\Projects\Music Git\MusicSchoolWeb\MusicSchoolWeb\bin\roslyn\VBCSCompiler.exe.config
 D:\Poonam Yadav\Projects\Music Git\MusicSchoolWeb\MusicSchoolWeb\bin\Antlr3.Runtime.dll
-D:\Poonam Yadav\Projects\Music Git\MusicSchoolWeb\MusicSchoolWeb\bin\BusinessLayer.dll
 D:\Poonam Yadav\Projects\Music Git\MusicSchoolWeb\MusicSchoolWeb\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 D:\Poonam Yadav\Projects\Music Git\MusicSchoolWeb\MusicSchoolWeb\bin\Microsoft.Web.Infrastructure.dll
 D:\Poonam Yadav\Projects\Music Git\MusicSchoolWeb\MusicSchoolWeb\bin\Newtonsoft.Json.dll
+D:\Poonam Yadav\Projects\Music Git\MusicSchoolWeb\MusicSchoolWeb\bin\System.Data.SqlClient.dll
 D:\Poonam Yadav\Projects\Music Git\MusicSchoolWeb\MusicSchoolWeb\bin\System.Web.Helpers.dll
 D:\Poonam Yadav\Projects\Music Git\MusicSchoolWeb\MusicSchoolWeb\bin\System.Web.Mvc.dll
 D:\Poonam Yadav\Projects\Music Git\MusicSchoolWeb\MusicSchoolWeb\bin\System.Web.Optimization.dll
@@ -220,7 +220,7 @@ D:\Poonam Yadav\Projects\Music Git\MusicSchoolWeb\MusicSchoolWeb\bin\System.Web.
 D:\Poonam Yadav\Projects\Music Git\MusicSchoolWeb\MusicSchoolWeb\bin\System.Web.WebPages.dll
 D:\Poonam Yadav\Projects\Music Git\MusicSchoolWeb\MusicSchoolWeb\bin\System.Web.WebPages.Razor.dll
 D:\Poonam Yadav\Projects\Music Git\MusicSchoolWeb\MusicSchoolWeb\bin\WebGrease.dll
-D:\Poonam Yadav\Projects\Music Git\MusicSchoolWeb\MusicSchoolWeb\bin\BusinessLayer.pdb
+D:\Poonam Yadav\Projects\Music Git\MusicSchoolWeb\MusicSchoolWeb\bin\System.Data.SqlClient.xml
 D:\Poonam Yadav\Projects\Music Git\MusicSchoolWeb\MusicSchoolWeb\bin\System.Web.Helpers.xml
 D:\Poonam Yadav\Projects\Music Git\MusicSchoolWeb\MusicSchoolWeb\bin\System.Web.Mvc.xml
 D:\Poonam Yadav\Projects\Music Git\MusicSchoolWeb\MusicSchoolWeb\bin\System.Web.Optimization.xml
@@ -231,10 +231,6 @@ D:\Poonam Yadav\Projects\Music Git\MusicSchoolWeb\MusicSchoolWeb\bin\System.Web.
 D:\Poonam Yadav\Projects\Music Git\MusicSchoolWeb\MusicSchoolWeb\bin\Newtonsoft.Json.xml
 D:\Poonam Yadav\Projects\Music Git\MusicSchoolWeb\MusicSchoolWeb\bin\Antlr3.Runtime.pdb
 D:\Poonam Yadav\Projects\Music Git\MusicSchoolWeb\MusicSchoolWeb\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-D:\Poonam Yadav\Projects\Music Git\MusicSchoolWeb\MusicSchoolWeb\obj\Debug\MusicSchoolWeb.csproj.AssemblyReference.cache
 D:\Poonam Yadav\Projects\Music Git\MusicSchoolWeb\MusicSchoolWeb\obj\Debug\MusicSchoolWeb.csproj.CoreCompileInputs.cache
 D:\Poonam Yadav\Projects\Music Git\MusicSchoolWeb\MusicSchoolWeb\obj\Debug\MusicSchoolWeb.dll
 D:\Poonam Yadav\Projects\Music Git\MusicSchoolWeb\MusicSchoolWeb\obj\Debug\MusicSchoolWeb.pdb
-D:\Poonam Yadav\Projects\Music Git\MusicSchoolWeb\MusicSchoolWeb\bin\System.Data.SqlClient.dll
-D:\Poonam Yadav\Projects\Music Git\MusicSchoolWeb\MusicSchoolWeb\bin\System.Data.SqlClient.xml
-D:\Poonam Yadav\Projects\Music Git\MusicSchoolWeb\MusicSchoolWeb\obj\Debug\MusicSchoolWeb.csproj.CopyComplete

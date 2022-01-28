@@ -116,13 +116,17 @@
                                             <th>Name</th>
                                             <th>File Size(MB)</th>
                                             <th>Play Audio</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @{
+                                            int i = 1;
+                                        }
                                         @foreach (var item in Model)
                                         {
                                             <tr>
-                                                <td>@item.ID</td>
+                                                <td>@i</td>
                                                 <td>@item.Name</td>
                                                 <td>@item.FileSize</td>
                                                 <td>
@@ -132,6 +136,7 @@
                                                 </td>
                                                 <td>@Html.ActionLink("Delete", "Delete", new { i = item.ID, filenames = item.Name })</td>
                                             </tr>
+                                            i++;
                                         }
                                     </tbody>
                                 </table>
