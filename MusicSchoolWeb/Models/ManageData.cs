@@ -22,13 +22,11 @@ namespace MusicSchoolWeb.Models
                 dtContainer = db.DataTable(query);
                 if (dtContainer.Rows.Count > 0)
                 {
-
                     foreach (DataRow rdr in dtContainer.Rows)
                     {
                         Lesson topic = new Lesson();
                         topic.LessonId = Convert.ToInt32(rdr["Id"]);
                         topic.LessonName = rdr["LessionName"].ToString();
-
                         retval.Add(topic);
                     }
                 }
@@ -62,7 +60,7 @@ namespace MusicSchoolWeb.Models
                         topic.LessonName = rdr["LessionName"].ToString();
                         lessons.Add(topic);
                     }
-                    
+
                 }
                 else
                 {

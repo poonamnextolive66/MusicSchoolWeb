@@ -33,7 +33,7 @@
                         <table class="table table-hovered sub-category-table">
                             @{
                                 int i = 1;
-                                
+
                                 string currentlession = "";
                             }
                             @foreach (var data in ViewBag.lasson)
@@ -42,87 +42,24 @@
                                     <td>
                                         <details class="details-example">
                                             <summary>@i . @data.LessonName</summary>
-                                            @*@currentlession=@data.LessonName
-        @if()*@
-                                            @{ 
-                                                double j = i+0.1;
+                                            @{
+                                                double j = i + 0.1;
                                             }
                                             @foreach (var data1 in ViewBag.topic)
                                             {
-                                                if(data.LessonId == data1.LessionId)
+                                                if (data.LessonId == data1.LessionId)
                                                 {
-                                                <ul>
-                                                    <li tabindex="1"> <a href="#" class="facey">@j @data1.TopicName</a></li>
-                                                </ul>
-                                                    j=j+0.1;
+                                                    <ul>
+                                                        <li tabindex="1"> <a href="#" class="facey">@j @data1.TopicName</a></li>
+                                                    </ul>
+                                                    j = j + 0.1;
                                                 }
-
-
                                             }
-                                            </details>
+                                        </details>
                                     </td>
                                 </tr>
                                 i++;
                             }
-                            @*<tr>
-                                    <td>
-                                        <details class="details-example">
-                                            <summary>2.Pitch</summary>
-                                            <ul>
-                                                <li tabindex="1">2.1 Musical Pitch </li>
-                                                <li tabindex="1">2.2 Pitch Matching One Note (any note in range) </li>
-                                                <li tabindex="1">2.3 Introduction to Pitch Intervals</li>
-                                            </ul>
-                                        </details>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td>
-                                        <details class="details-example">
-                                            <summary>3.Pulse</summary>
-                                            <ul>
-                                                <li tabindex="1">3.1 Beat (Pulse) </li>
-                                                <li tabindex="1">3.2 Tapping with the Metronome</li>
-                                                <li tabindex="1">3.3 Skipping Beats</li>
-                                                <li tabindex="1">3.4 Introduction to Beat Notation</li>
-                                                <li tabindex="1">3.5 Beat Error Dections</li>
-                                            </ul>
-                                        </details>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td>
-                                        <details class="details-example">
-                                            <summary>4.Pitch Notation</summary>
-                                            <ul>
-                                                <li tabindex="1">4.1 Pitch sight-Singing</li>
-                                                <li tabindex="1">4.2 Pitch Dictation with 2 notes 1</li>
-                                                <li tabindex="1">4.3 Pitch Dictation with 2 notes 2</li>
-                                                <li tabindex="1">4.4 Pitch Dictation with 2 notes 3</li>
-                                                <li tabindex="1">4.5 Melodic Dictation</li>
-                                            </ul>
-                                        </details>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td>
-                                        <details class="details-example">
-                                            <summary>5.Duration</summary>
-                                            <ul>
-                                                <li tabindex="1">5.1 Rhythmic Duration</li>
-                                                <li tabindex="1">5.2 Performing Note Onsets and Offsets</li>
-                                                <li tabindex="1">5.3 Rhythm Sight-Reading</li>
-                                                <li tabindex="1">5.4 Rhythm Dictation</li>
-                                                <li tabindex="1">5.5 Module Recape</li>
-                                            </ul>
-                                        </details>
-                                    </td>
-                                </tr>*@
-
-
                         </table>
                     </div>
                 </div>

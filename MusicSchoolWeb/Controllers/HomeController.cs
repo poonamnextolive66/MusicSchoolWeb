@@ -197,9 +197,9 @@ namespace MusicSchoolWeb.Controllers
 
                 TempData["CompareMessage"] = counter;
             }
-                return Json(new { msg  });
-            }
-
+            return Json(new { msg });
         }
+
     }
+}
 

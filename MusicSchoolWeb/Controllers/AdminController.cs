@@ -90,7 +90,7 @@ namespace MusicSchoolWeb.Controllers
                 TempData["msg"] = counter;
             }
             return RedirectToAction("UploadAudio","Home");
-        }
+       }
         public ActionResult Lesson()
         {
             using (SqlConnection con = new SqlConnection(CS))
