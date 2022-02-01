@@ -8,8 +8,8 @@ using System.Web;
 using System.Web.Mvc;
 using System.Configuration;
 using System.Collections;
-
-
+using System.IO;
+using System.Security.Cryptography;
 
 namespace MusicSchoolWeb.Controllers
 {
@@ -40,6 +40,56 @@ namespace MusicSchoolWeb.Controllers
         public ActionResult UploadAudio()
         {
             return View();
+        }
+        [HttpGet]
+        public ActionResult AddAudio()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult AddAudio(Lesson lesson)
+        {
+            bool msg = false;
+            if (lesson.Audiofiles != null)
+            {
+                string fileName = Path.GetFileName(lesson.Audiofiles.FileName);
+                int fileSize = lesson.Audiofiles.ContentLength;
+                int Size = fileSize / 1000000;
+
+                var Hash_Value_Of_First_File = string.Empty;
+                var Hash_Value_Of_All_Files_One_By_One = string.Empty;
+                string OldFiles = string.Empty;
+                int counter = 0;
+                lesson.Audiofiles.SaveAs(Server.MapPath("~/RawFiles/" + fileName));
+                using (var stream = new BufferedStream(System.IO.File.OpenRead(Server.MapPath("~/RawFiles/" + fileName)), 1200000))
+                {
+                    SHA256Managed sha = new SHA256Managed();
+                    byte[] checksum = sha.ComputeHash(stream);
+                    Hash_Value_Of_First_File = BitConverter.ToString(checksum).Replace("-", string.Empty);
+                }
+                string[] filePaths = Directory.GetFiles(Server.MapPath("~/AudioFiles/"));
+                foreach (string filePath in filePaths)
+                {
+                    OldFiles = Path.GetFileName(filePath);
+                    using (var stream = new BufferedStream(System.IO.File.OpenRead(Server.MapPath("~/AudioFiles/" + OldFiles)), 1200000))
+                    {
+                        SHA256Managed sha = new SHA256Managed();
+                        byte[] checksum = sha.ComputeHash(stream);
+                        Hash_Value_Of_All_Files_One_By_One = BitConverter.ToString(checksum).Replace("-", string.Empty);
+                    }
+                    if (Hash_Value_Of_First_File == Hash_Value_Of_All_Files_One_By_One)
+                        counter = 1;
+                }
+                if (counter == 0)
+                {
+                    lesson.AudioFilename = lesson.Audiofiles.FileName;
+                    lesson.Audiofiles.SaveAs(Server.MapPath("~/AudioFiles/" + fileName));
+                    msg = manage.InsertAudioFiles(lesson);
+                    TempData["msgsuccess"] = "Yes";
+                }
+                TempData["msg"] = counter;
+            }
+            return RedirectToAction("UploadAudio","Home");
         }
         public ActionResult Lesson()
         {
@@ -103,7 +153,7 @@ namespace MusicSchoolWeb.Controllers
             }
             return View();
         }
-       public ActionResult DeleteTopic(string id)
+        public ActionResult DeleteTopic(string id)
         {
             bool status = false;
             status = manage.deletetopic(id);
@@ -125,6 +175,45 @@ namespace MusicSchoolWeb.Controllers
             }
             return RedirectToAction("Lesson", "Admin");
         }
+        public JsonResult GetTopics(string lasson)
+        {
+            string topic = "";
+            selectedValue selected = new selectedValue();
+            var data = manage.GetTopicbylasson(lasson);
+            if (data.Count > 0)
+            {
+                foreach (var d in data)
+                {
+                    topic += "<option value='" + d.Id + "'>" + d.TopicName + "</option>";
+                }
+            }
+            return Json(topic, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult GetLesson()
+        {
+            string topic = "";
+            selectedValue selected = new selectedValue();
+            var data = manage.GetLesson();
+            if (data.Count > 0)
+            {
+                foreach (var d in data)
+                {
+                    topic += "<option value='" + d.LessonId + "'>" + d.LessonName + "</option>";
+                }
+            }
 
+            return Json(topic, JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult DeleteAudio(string id)
+        {
+            bool status = false;
+            status = manage.deleteaudio(id);
+            if (status == true)
+            {
+                TempData["msgdelete"] = "Yes";
+                return RedirectToAction("UploadAudio", "Home");
+            }
+            return View();
+        }
     }
     }

@@ -1,0 +1,63 @@
+﻿@model MusicSchoolWeb.Models.Lesson
+@{
+    ViewBag.Title = "UploadAudio";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="modal-body">
+    @using (Html.BeginForm("UploadAudio", "Admin", FormMethod.Post))
+    {
+        <div class="form-group">
+            <label>Choose File:</label>
+            <div class="input-group">
+                @Html.TextBoxFor(m => m.LessonId)
+                <div class="custom-file">
+                    <select name="LessonId" id="LessonId">
+                        <option value="0">Select Lesson</option>
+                    </select>
+                    <label class="custom-file-label">Lasson </label>
+                </div>
+
+                <div class="custom-file">
+                    <select name="TopicName" id="TopicName">
+                        <option value="0">Select Topic</option>
+                    </select>
+                    <label class="custom-file-label">Topic </label>
+                </div>
+
+                <div class="custom-file">
+                    <input type="file" name="Audiofiles" id="Audiofiles" />
+                    <label class="custom-file-label">Audio </label>
+                </div>
+                <div class="input-group-append">
+                    <input type="submit" class="btn btn-secondary" value="Upload" />
+                </div>
+            </div>
+        </div>
+    }
+</div>
+<script src="~/assets/js/jquery-1.7.1.min.js"></script>
+<script>
+
+    $(document).ready(function () {
+        $.ajax({
+            type: "GET",
+            url: "/Admin/GetLesson",
+            dataType: "json",
+            success: function (topic) {
+                $('#LessonId').append(topic);
+            }
+        });
+        $("#LessonId").change(function () {
+            var lasson = $("#LessonId").val();
+            $.ajax({
+                type: "Post",
+                url: "/Admin/GetTopics",
+                data: { lasson: lasson },
+                success: function (topic) {
+                    $('#TopicName').append(topic);
+                }
+            });
+        });
+    });
+</script>

@@ -123,7 +123,6 @@ namespace MusicSchoolWeb.Models
                         topic.LessionId = Convert.ToInt32(rdr["LessionId"]);
                         topic.TopicName = rdr["TopicName"].ToString();
                         topic.Id = Convert.ToInt32(rdr["Id"].ToString());
-
                         retval.Add(topic);
                     }
                 }
@@ -151,6 +150,57 @@ namespace MusicSchoolWeb.Models
             string Query = "Delete From LessionMaster_tbl Where Id = " + id;
             status = db.Delete(Query);
             return status;
+        }
+        public bool deleteaudio(string id)
+        {
+            bool status = false;
+            string Query = "Delete From Audio_tbl Where Id = " + id;
+            status = db.Delete(Query);
+            return status;
+        }
+        public List<Topic> GetTopicbylasson(string lasson)
+        {
+            List<Topic> retval = new List<Topic>();
+            dtContainer = new DataTable();
+            try
+            {
+                string query = "select * FROM Topics_tbl where LessionId='" + lasson + "' ";
+                dtContainer = db.DataTable(query);
+                if (dtContainer.Rows.Count > 0)
+                {
+                    foreach (DataRow rdr in dtContainer.Rows)
+                    {
+                        Topic topic = new Topic();
+                        topic.LessionId = Convert.ToInt32(rdr["LessionId"]);
+                        topic.TopicName = rdr["TopicName"].ToString();
+                        topic.Id = Convert.ToInt32(rdr["Id"].ToString());
+                        retval.Add(topic);
+                    }
+                }
+                else
+                {
+                    retval = null;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+            return retval;
+        }
+        public List<Lesson> GetAudioFiles()
+        {
+            List<Lesson> audiolist = new List<Lesson>();
+            string query = "SELECT LessionMaster_tbl.LessionName, Topics_tbl.TopicName, Audio_tbl.Audiofiles,Audio_tbl.Id From LessionMaster_tbl JOIN Audio_tbl ON Audio_tbl.LessionId = LessionMaster_tbl.Id inner JOIN Topics_tbl ON Audio_tbl.TopicId = Topics_tbl.Id;";
+            audiolist = db.GetData(query);
+            return audiolist;
+        }
+        public bool InsertAudioFiles(Lesson lesson)
+        {
+            bool msg = false;
+            string Query = "Insert into Audio_tbl values ('" + lesson.LessonId + "','" + lesson.TopicId + "','" + lesson.AudioFilename + "')";
+            msg = db.InsertUpdateDelete(Query);
+            return msg;
         }
     }
 }

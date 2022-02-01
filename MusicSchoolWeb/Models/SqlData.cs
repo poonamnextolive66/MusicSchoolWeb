@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -52,6 +53,34 @@ namespace MusicSchoolWeb.Models
             }
             return status;
         }
-       
+        public List<Lesson> GetData(string query)
+        {
+            List<Lesson> audiolist = new List<Lesson>();
+            SqlCommand cmd = new SqlCommand(query, con);
+            con.Open();
+            SqlDataReader rdr = cmd.ExecuteReader();
+            while (rdr.Read())
+            {
+                Lesson audio = new Lesson();
+                audio.Id = Convert.ToInt32(rdr["ID"]);
+                audio.LessonName = rdr["LessionName"].ToString();
+                audio.TopicName = rdr["TopicName"].ToString();
+                audio.AudioFilename = rdr["Audiofiles"].ToString();
+                audiolist.Add(audio);
+            }
+            return audiolist;
+        }
+        public bool InsertUpdateDelete(string query)
+        {
+            bool msg = false;
+            SqlCommand cmd = new SqlCommand(query, con);
+                con.Open();
+                SqlDataReader rdr = cmd.ExecuteReader();
+                if (rdr.RecordsAffected == 1)
+                {
+                msg = true;
+                }
+            return msg;
+        }
     }
 }

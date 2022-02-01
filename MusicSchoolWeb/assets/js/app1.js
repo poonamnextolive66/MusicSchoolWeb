@@ -126,43 +126,22 @@ function createDownloadLink(blob) {
 	var url = URL.createObjectURL(blob);
 	//var url = "http://localhost/TestPiano/download"
 	var au = document.createElement('audio');
-	//au.id = "divaudio";
-	/*	var li = document.createElement('li');*/
 	var li = document.createElement('td');
 	var link = document.createElement('a');
-	//g = document.createElement('div');
-	
-	//name of .wav file to use during upload and download (without extendion)
 	var filename = new Date().toISOString().slice(0, 16).replace('T', ' ')
-	//var filename = "C: /Users/user/Prashant_Pal/TestPiano\download";
-	//add controls to the <audio> element
 	var input = document.createElement('input');
 	input.type = "hidden";
 	input.id = "inputaudio";
 	input.value = url;
-	//...    
 	li.appendChild(input);
-	au.className = "poonam";
 	au.controls = true;
 	au.src = url;
-	//save to disk link
-	//link.href = url;
-	//link.download = filename + ".wav"; //download forces the browser to donwload the file using the  filename
-	
-	//a.setAttribute("download", fileName);
-	//link.setAttribute('download', filename);
-
 	link.innerHTML = "Save to disk";
-
-	//add the new audio element to li
 	li.appendChild(au);
-
 	//add the filename to the li
 	li.appendChild(document.createTextNode(filename + ".wav "))
-
 	//add the save to disk link to li
 	li.appendChild(link);
-
 	//upload link
 	var upload = document.createElement('a');
 	upload.href = url;

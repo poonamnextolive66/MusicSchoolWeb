@@ -1,9 +1,8 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Topics";
     Layout = "~/Views/Shared/AdminLayout.cshtml";
 }
-@using MusicSchoolWeb.Models;
+@using MusicSchoolWeb.Models
 <!DOCTYPE html>
 <html>
 <head>
@@ -111,18 +110,22 @@
                                             <th>ID</th>
                                             <th>Lesson</th>
                                             <th>Topic Name</th>
-                                            @*<th>Action</th>*@
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @{ 
+                                            int i = 1;
+                                        }
                                         @foreach (var item in Model)
                                         {
                                             <tr>
-                                                <td>@item.Id</td>
+                                                <td>@i</td>
                                                 <td>@item.LessonName</td>
                                                 <td>@item.TopicName</td>
-                                              @*  <td>@Html.ActionLink("Delete", "Delete", new { i = item.Id, filenames = item.LessonName })</td>*@
+                                                <td>@Html.ActionLink("Delete", "DeleteTopic", new { id = item.Id })</td>
                                             </tr>
+                                            i++;
                                         }
                                     </tbody>
                                 </table>

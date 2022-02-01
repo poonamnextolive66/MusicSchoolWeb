@@ -75,10 +75,9 @@
                                             </div>
                                         }
                                     }
-                                    <button type="button" class="btn btn-primary rounded-0" data-toggle="modal" data-target="#myModal">
-                                        <i class="fa fa-plus-circle"></i> Add New
-                                    </button>
-
+                                    <a href="/Admin/AddAudio">
+                                     <i class="fa fa-plus-circle"></i> Add New
+                                    </a>
                                     <div class="modal fade" id="myModal">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
@@ -113,9 +112,9 @@
                                     <thead>
                                         <tr>
                                             <th>ID</th>
-                                            <th>Name</th>
-                                            <th>File Size(MB)</th>
-                                            <th>Play Audio</th>
+                                            <th>Lesson Name</th>
+                                            <th>Topic Name</th>
+                                            <th>Audio</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -125,17 +124,17 @@
                                         }
                                         @foreach (var item in Model)
                                         {
-                                            <tr>
-                                                <td>@i</td>
-                                                <td>@item.Name</td>
-                                                <td>@item.FileSize</td>
-                                                <td>
-                                                    <audio controls>
-                                                        <source src="@Url.Content(@item.FilePath)" type="audio/ogg">
-                                                    </audio>
-                                                </td>
-                                                <td>@Html.ActionLink("Delete", "Delete", new { i = item.ID, filenames = item.Name })</td>
-                                            </tr>
+                                        <tr>
+                                            <td>@i</td>
+                                            <td>@item.LessonName</td>
+                                            <td>@item.TopicName</td>
+                                            <td>
+                                                <audio controls>
+                                                    <source src="~/RawFiles/@item.AudioFilename" type="audio/ogg">
+                                                </audio>
+                                            </td>
+                                            <td><a href="/Admin/DeleteAudio/@item.Id">Delete</a></td>
+                                        </tr>
                                             i++;
                                         }
                                     </tbody>
