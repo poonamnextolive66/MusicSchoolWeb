@@ -3,13 +3,10 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
-
     <link href="/assets/img/favicon.png" rel="icon">
     <link href="/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700|Raleway:300,400,400i,500,500i,700,800,900" rel="stylesheet">
-
     <!-- Vendor CSS Files -->
     <link href="~/assets/vendor/animate.css/animate.min.css" rel="stylesheet">
     <link href="~/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -70,23 +67,19 @@
 <body>
     <header id="header" class="fixed-top d-flex align-items-center">
         <div class="container d-flex justify-content-between">
-
             <div class="logo">
                 <h1><a href="/"><span>Music</span>Learning</a></h1>
             </div>
-
             <nav id="navbar" class="navbar">
                 <ul>
                     <li><a class="nav-link scrollto active" href="/">Home</a></</li>
                     <li><a class="nav-link scrollto" href="~/Home/UploadAudio">Upload Audio</a></li>
                     <li><a class="nav-link scrollto" href="~/Admin/Lesson">Lessons</a></li>
                     <li><a class="nav-link scrollto" href="~/Admin/Topics">Topics</a></li>
-
                     <li><a href="/Account/Logout">Logout</a></li>
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav><!-- .navbar -->
-
         </div>
         <input type="hidden" name="User" id="User" value="@Session["User'"].ToString()" />
     </header><!-- End Header -->
@@ -103,7 +96,6 @@
                                 <div class="footer-logo">
                                     <h2><span>Music</span>Learning</h2>
                                 </div>
-
                                 <p>Music learning is enhanced when teachers know students' potential to achieve in music and teach systematically to individual differences.</p>
                                 <div class="footer-icons">
                                     <ul>

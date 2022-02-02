@@ -205,6 +205,34 @@
         background: transparent !important;
         box-shadow: none !important;
     }
+
+    #controls {
+        max-width: 100%;
+    }
+    button:first-child {
+        background: #ebdb21;
+    }
+    #controls > button {
+        width: 49%;
+        max-width: 49%;
+        margin: 0;
+        margin-top: 10px;
+    }
+
+    #controls > button#stopButton {
+        margin-left: 1%;
+    }
+
+        #controls > button#compare {
+            margin-left: 1%;
+        }
+       
+
+            #controls > button#stopButton:hover {
+                background: #2b94df;
+            }
+
+
 </style>
 <body>
     <div id="content">
@@ -246,11 +274,13 @@
                 <img src="~/assets/img/Mic.gif" style="height:100px;width:100px;"/><h6 style="color:red;"> Recording Start....</h6>
             </div>
             <br /><br />
-            <div id="controls" style="margin-top:-50px;">
-                <button id="recordButton">Record</button>
-                <button id="pauseButton" disabled>Pause</button>
-                <button id="stopButton" disabled>Stop</button>
-            </div>
+                  <div id="controls" style="margin-top:-50px;">
+                      <button id="recordButton">Record</button>
+                      <button id="stopButton" disabled>Stop</button>
+                      <button type="submit" id="compare" style="background: green;">Compare</button>
+
+
+                  </div>
             <div id="formats"></div>
              <table id="dataTable" class="table table-bordered table-striped">
                 <thead>
@@ -299,7 +329,7 @@
                     <div class="form-group">
                         <div class="input-group">
                             <div class="input-group-append">
-                                <button type="submit" id="compare">Compare</button>
+                                
                             </div>
                         </div>
                     </div>

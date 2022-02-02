@@ -15,6 +15,17 @@ using MusicSchoolWeb.Models;
 using SoundFingerprinting;
 using SoundFingerprinting.Tests;
 using System.Reflection;
+using static System.Net.WebRequestMethods;
+using System.Windows;
+using EO.WebBrowser.DOM;
+using System.Net;
+using System.Security.Policy;
+using Oracle.ManagedDataAccess.Client;
+using Microsoft.Ajax.Utilities;
+using ICSharpCode.AvalonEdit.Utils;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Net.Http;
+using System.Runtime.InteropServices.ComTypes;
 
 namespace MusicSchoolWeb.Controllers
 {
@@ -148,58 +159,100 @@ namespace MusicSchoolWeb.Controllers
         [HttpPost]
         public JsonResult CompareAudio(string au1, string au2)
         {
-            var msg = "The Tune is not Matched and Returned False. !";
+            string msg = string.Empty;
             string FirstFile = au1;
+            au1 = au1.Replace("data:audio/wav;base64,", "");
             string SecondFle = au2;
-
+            var bytes = Convert.FromBase64String(au1);
+            var contents = new StreamContent(new MemoryStream(bytes));
+            var hash11=GetHashSHA1(bytes);
+            //GetBlobtostreamfile(FirstFile);
+            //var streame1= GetStreamFromUrl(FirstFile);
             if (FirstFile != null && SecondFle != null)
             {
                 string fileName = Path.GetFileName(FirstFile);
-                //int fileSize = fileupload.ContentLength;
-                //int Size = fileSize / 1000000;
-
                 var Hash_Value_Of_First_File = string.Empty;
                 var Hash_Value_Of_All_Files_One_By_One = string.Empty;
                 string OldFiles = string.Empty;
                 int counter = 0;
-
-                //  fileupload.SaveAs(Server.MapPath("~/RawFiles/" + fileName));
-                //SecondFle = SecondFle.Replace(".mp3", "");
-                //SecondFle = "Lesson 1-3.mp3";
-                // Code for Extracting Hash Value of Currently Uploaded File Starts 
-                using (var stream = new BufferedStream(System.IO.File.OpenRead(Server.MapPath("~/AudioFiles/" + SecondFle)), 1200000))
+                Hash_Value_Of_First_File = hash11;
+               // byte[] mybyt = System.IO.File.ReadAllBytes(@"C:\Users\upkar\Downloads\testing.wav");
+                byte[] mybyt = System.IO.File.ReadAllBytes(Server.MapPath("~/AudioFiles/Lesson 1-3.mp3"));
+                Hash_Value_Of_All_Files_One_By_One = GetHashSHA1(mybyt);
+                if (Hash_Value_Of_First_File == Hash_Value_Of_All_Files_One_By_One)
+                    {
+                        counter = 1;
+                    }
+                else
                 {
-                    SHA256Managed sha = new SHA256Managed();
-                    byte[] checksum = sha.ComputeHash(stream);
-                    Hash_Value_Of_First_File = BitConverter.ToString(checksum).Replace("-", string.Empty);
+                    counter = 0;
                 }
-                // Code for Extracting Hash Value of Currently Uploaded File Ends
-
-
-                // Code for Extracting Hash Value of all files present in the folder to match with the new one starts
-                string[] filePaths = Directory.GetFiles(Server.MapPath("~/AudioFiles/"));
-                foreach (string filePath in filePaths)
-                {
-                    OldFiles = Path.GetFileName(filePath);  //FirstFile; //
-                    using (var stream = new BufferedStream(System.IO.File.OpenRead(Server.MapPath("~/AudioFiles/" + OldFiles)), 1200000))
-                    {
-                        SHA256Managed sha = new SHA256Managed();
-                        byte[] checksum = sha.ComputeHash(stream);
-                        Hash_Value_Of_All_Files_One_By_One = BitConverter.ToString(checksum).Replace("-", string.Empty);
-                    }
-
-                    if (Hash_Value_Of_First_File == Hash_Value_Of_All_Files_One_By_One)
-                    {
-
-                    }
                     //msg = "The Tune is Matched and Returned True. !";
-                }// Code for Extracting Hash Value of all files present in the folder to match with the new one Ends
+                // Code for Extracting Hash Value of all files present in the folder to match with the new one Ends
 
                 TempData["CompareMessage"] = counter;
             }
             return Json(new { msg });
         }
+        private static Stream GetStreamFromUrl(string url)
+        {
+            byte[] musicData = null;
 
+            using (var wc = new System.Net.WebClient())
+                musicData = wc.DownloadData(url);
+
+            return new MemoryStream(musicData);
+        }
+
+        public void GetBlobtostreamfile(string url)
+        {
+            url= "https://localhost:44395/24375a43-57ed-40b2-9dbe-ed22acd91dc4";
+            // Creates an HttpWebRequest with the specified URL.
+    HttpWebRequest myHttpWebRequest = (HttpWebRequest)WebRequest.Create(url);
+            // Sends the HttpWebRequest and waits for the response.         
+            HttpWebResponse myHttpWebResponse = (HttpWebResponse)myHttpWebRequest.GetResponse();
+            // Gets the stream associated with the response.
+            Stream receiveStream = myHttpWebResponse.GetResponseStream();
+            Encoding encode = System.Text.Encoding.GetEncoding("utf-8");
+            // Pipes the stream to a higher level stream reader with the required encoding format.
+            StreamReader readStream = new StreamReader(receiveStream, encode);
+            Console.WriteLine("\r\nResponse stream received.");
+            Char[] read = new Char[256];
+            // Reads 256 characters at a time.
+            int count = readStream.Read(read, 0, 256);
+            Console.WriteLine("HTML...\r\n");
+            while (count > 0)
+            {
+                // Dumps the 256 characters on a string and displays the string to the console.
+                String str = new String(read, 0, count);
+                Console.Write(str);
+                count = readStream.Read(read, 0, 256);
+            }
+            Console.WriteLine("");
+            // Releases the resources of the response.
+            myHttpWebResponse.Close();
+            // Releases the resources of the Stream.
+            readStream.Close();
+        }
+        public void BlobToStringConverter(string blob)
+        {
+            //var audioURL = window.URL.createObjectURL(blob);
+            //audio.src = audioURL;
+
+            //var reader = new window.FileReader();
+            //reader.readAsDataURL(blob);
+            //reader.onloadend = function() {
+            //    base64data = reader.result;
+            //    console.log(base64data);
+            //}
+        }
+        public static string GetHashSHA1(byte[] data)
+        {
+            using (var sha1 = new System.Security.Cryptography.SHA1CryptoServiceProvider())
+            {
+                return string.Concat(sha1.ComputeHash(data).Select(x => x.ToString("X2")));
+            }
+        }
     }
 }
 
