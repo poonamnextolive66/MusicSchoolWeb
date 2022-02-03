@@ -1,4 +1,4 @@
-﻿@model MusicSchoolWeb.Models.Compare2FilesModel
+﻿@using MusicSchoolWeb.Models
 @{
     ViewBag.Title = "Piano";
     Layout = "~/Views/Shared/HomeLayout.cshtml";
@@ -209,9 +209,11 @@
     #controls {
         max-width: 100%;
     }
+
     button:first-child {
         background: #ebdb21;
     }
+
     #controls > button {
         width: 49%;
         max-width: 49%;
@@ -219,20 +221,18 @@
         margin-top: 10px;
     }
 
-    #controls > button#stopButton {
-        margin-left: 1%;
-    }
+        #controls > button#stopButton {
+            margin-left: 1%;
+        }
 
         #controls > button#compare {
             margin-left: 1%;
         }
-       
-
-            #controls > button#stopButton:hover {
-                background: #2b94df;
-            }
 
 
+        #controls > button#stopButton:hover {
+            background: #2b94df;
+        }
 </style>
 <body>
     <div id="content">
@@ -271,18 +271,18 @@
         <p id="top">↑</p>
         <div id="below-inner">
             <div id="micdiv" style="margin:2%;display:none">
-                <img src="~/assets/img/Mic.gif" style="height:100px;width:100px;"/><h6 style="color:red;"> Recording Start....</h6>
+                <img src="~/assets/img/Mic.gif" style="height:100px;width:100px;" /><h6 style="color:red;"> Recording Start....</h6>
             </div>
             <br /><br />
-                  <div id="controls" style="margin-top:-50px;">
-                      <button id="recordButton">Record</button>
-                      <button id="stopButton" disabled>Stop</button>
-                      <button type="submit" id="compare" style="background: green;">Compare</button>
+            <div id="controls" style="margin-top:-50px;">
+                <button id="recordButton">Record</button>
+                <button id="stopButton" disabled>Stop</button>
+                <button type="submit" id="compare" style="background: green;">Compare</button>
 
 
-                  </div>
+            </div>
             <div id="formats"></div>
-             <table id="dataTable" class="table table-bordered table-striped">
+            <table id="dataTable" class="table table-bordered table-striped">
                 <thead>
                     <tr>
                         <th>Play Audio</th>
@@ -291,58 +291,67 @@
                 <tbody>
                     <tr>
                         <td>
-                            <audio id="audio" controls>
-                                <source src="~/AudioFiles/Lesson%201-3.mp3" type="audio/mpeg" id="src" />
-                            </audio>
+                            @if (ViewBag.song != null)
+                            {
+                                foreach (Lesson src in ViewBag.song)
+                                {
+                                    <audio id="audio" controls>
+                                        <source src="~/AudioFiles/@src.AudioFilename" type="audio/mpeg" id="src" />
+                                    </audio>
+                                }
+                            }
+
                             @*<audio controls="controls">
-                                <source src="~/AudioFiles/2022-01-27%2010_00%20(1).wav  />
-                            </audio>*@
+                            <source src="~/AudioFiles/2022-01-27%2010_00%20(1).wav  />
+                        </audio>*@
                         </td>
                     </tr>
                     <tr><th>Recorded Audio</th></tr>
                     <tr id="recordingsList"></tr>
                 </tbody>
             </table>
-<br />
-            <div class="custom-file" style="color:black;display:none">
-            <label class="custom-file-label">Upload Your Recorded File</label><br />
-            <input type="file" id="upload" name="upload" class="custom-file-input" />
-
-        </div>
             <br />
-          
-                <div class="col-lg-12">
-                    <div class="col-sm-8">
-                        <select name="cars" id="cars" style="display:none;">
-                            <option value="0"> Select Existing Audio </option>
-                            <option value="Lesson 1-3.mp3" selected> Lesson 1-3.mp3</option>
-                           
-                        </select>
-                    </div>
-                    <div class="col-sm-8">
-                        <select name="cars2" id="audio2" style="display:none;">
-                        </select>
-                    </div>
+            <div class="custom-file" style="color:black;display:none">
+                <label class="custom-file-label">Upload Your Recorded File</label><br />
+                <input type="file" id="upload" name="upload" class="custom-file-input" />
+
+            </div>
+            <br />
+
+            <div class="col-lg-12">
+                <div class="col-sm-8">
+                    <select name="cars" id="cars" style="display:none;">
+                        @if (ViewBag.song != null)
+                        {
+                            foreach (Lesson src in ViewBag.song)
+                            {
+                                <option value="@src.AudioFilename" selected>@src.AudioFilename</option>
+                            }
+                        }
+                    </select>
                 </div>
-                <br />
-                <div class="footer">
-                    <div class="form-group">
-                        <div class="input-group">
-                            <div class="input-group-append">
-                                
-                            </div>
+                <div class="col-sm-8">
+                    <select name="cars2" id="audio2" style="display:none;">
+                    </select>
+                </div>
+            </div>
+            <br />
+            <div class="footer">
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-append">
+
                         </div>
                     </div>
                 </div>
+            </div>
             @*}*@
             <canvas id="canvas"></canvas>
             @if (TempData["CompareMessage"] != null)
             {
                 if (TempData["CompareMessage"].ToString() == "1")
                 {
-                    <div class="alert alert-success">
-                        <p> The Tune is Matched and Returned True. !</p>
-                    </div>
+
                 }
                 if (TempData["CompareMessage"].ToString() == "0")
                 {
@@ -351,6 +360,16 @@
                     </div>
                 }
             }
+            <div>
+                <div class="alert alert-success">
+                    <p> Perfect ! 100% At This Lesson</p>
+                </div>
+                <a href="/Admin/Sub_Category">
+                    <div>
+                        <p> Click Here For Next Lesson</p>
+                    </div>
+                </a>
+            </div>
             <div class="" id="Modal">
                 <script src="~/assets/js/jquery-1.7.1.min.js"></script>
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -362,7 +381,7 @@
             </div>
             <script>
                 document.getElementById("upload").addEventListener("change", handleFiles, false);
-              
+
                 function handleFiles(event) {
                     var data = $("#upload").val();
                     $(document).ready(function () {
@@ -409,20 +428,20 @@
                     //{
                     //    url: "/Home/CompareAudio";
                     //}
-                        $.ajax({
-                            type: "POST",
-                            url: "/Home/CompareAudio",
-                            dataType: "json",
-                            data: { au1: li, au2: demo },
-                            success: function (msg) {
-                                if (msg) {
-                                   // alert(msg);
-                                    location.reload(true);
-                                } else {
-                                    alert("Cannot add to list !");
-                                }
+                    $.ajax({
+                        type: "POST",
+                        url: "/Home/CompareAudio",
+                        dataType: "json",
+                        data: { au1: li, au2: demo },
+                        success: function (msg) {
+                            if (msg) {
+                                // alert(msg);
+                                location.reload(true);
+                            } else {
+                                alert("Cannot add to list !");
                             }
-                        });
+                        }
+                    });
                 });
             </script>
             <script>

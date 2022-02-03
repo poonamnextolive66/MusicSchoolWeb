@@ -15,6 +15,7 @@ namespace MusicSchoolWeb.Controllers
     public class UserController : Controller
     {
         List<AudioFile> audiolist = new List<AudioFile>();
+        ManageData manage = new ManageData();
         string CS = ConfigurationManager.ConnectionStrings["DBCS"].ConnectionString;
         // GET: User
         public ActionResult Index()
@@ -45,10 +46,11 @@ namespace MusicSchoolWeb.Controllers
         {
             return View();
         }
-        public ActionResult Piano()
+        public ActionResult Piano(string lessonId,string topicId)
         {
-            FileInfo[] obj = ReadFiles();
-            ViewBag.song = obj;
+            List<Lesson> dt = manage.GetAudioSample(lessonId, topicId);
+            //FileInfo[] obj = ReadFiles();
+            ViewBag.song = dt;
             return View();
         }
         private FileInfo[] ReadFiles()

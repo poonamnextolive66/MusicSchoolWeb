@@ -166,8 +166,6 @@ namespace MusicSchoolWeb.Controllers
             var bytes = Convert.FromBase64String(au1);
             var contents = new StreamContent(new MemoryStream(bytes));
             var hash11=GetHashSHA1(bytes);
-            //GetBlobtostreamfile(FirstFile);
-            //var streame1= GetStreamFromUrl(FirstFile);
             if (FirstFile != null && SecondFle != null)
             {
                 string fileName = Path.GetFileName(FirstFile);
@@ -177,7 +175,7 @@ namespace MusicSchoolWeb.Controllers
                 int counter = 0;
                 Hash_Value_Of_First_File = hash11;
                // byte[] mybyt = System.IO.File.ReadAllBytes(@"C:\Users\upkar\Downloads\testing.wav");
-                byte[] mybyt = System.IO.File.ReadAllBytes(Server.MapPath("~/AudioFiles/Lesson 1-3.mp3"));
+                byte[] mybyt = System.IO.File.ReadAllBytes(Server.MapPath("~/AudioFiles/"+au2+""));
                 Hash_Value_Of_All_Files_One_By_One = GetHashSHA1(mybyt);
                 if (Hash_Value_Of_First_File == Hash_Value_Of_All_Files_One_By_One)
                     {

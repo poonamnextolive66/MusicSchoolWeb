@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Web;
 using System.Configuration;
+using System.Windows.Controls.Primitives;
 
 namespace MusicSchoolWeb.Models
 {
@@ -242,6 +243,35 @@ namespace MusicSchoolWeb.Models
                 msg = "exist";
             }
             return msg;
+        }
+        public List<Lesson> GetAudioSample(string lessonId, string topicId)
+        {
+            List<Lesson> retval = new List<Lesson>();
+            dtContainer = new DataTable();
+            try
+            {
+                string query = "  select * from Audio_tbl where LessionId='"+lessonId+"'and TopicId='"+topicId+"'";
+                dtContainer = db.DataTable(query);
+                if (dtContainer.Rows.Count > 0)
+                {
+                    foreach (DataRow rdr in dtContainer.Rows)
+                    {
+                        Lesson topic = new Lesson();
+                        topic.AudioFilename = rdr["Audiofiles"].ToString();
+                        topic.Id = Convert.ToInt32(rdr["Id"].ToString());
+                        retval.Add(topic);
+                    }
+                }
+                else
+                {
+                    retval = null;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+            return retval;
         }
     }
 }
