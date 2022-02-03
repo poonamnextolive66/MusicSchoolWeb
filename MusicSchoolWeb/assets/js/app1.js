@@ -148,13 +148,13 @@ function createDownloadLink(blob) {
 	//link.innerHTML = "Save to disk";
 	li.appendChild(au);
 	//add the filename to the li
-	li.appendChild(document.createTextNode(filename + ".wav "))
+	li.appendChild(document.createTextNode(filename + ".mp3 "))
 	//add the save to disk link to li
 	li.appendChild(link);
 	//upload link
 	var upload = document.createElement('a');
 	upload.href = url;
-	upload.innerHTML = "Upload";
+	//upload.innerHTML = "Upload";
 	upload.addEventListener("click", function (event) {
 		var xhr = new XMLHttpRequest();
 		xhr.onload = function (e) {

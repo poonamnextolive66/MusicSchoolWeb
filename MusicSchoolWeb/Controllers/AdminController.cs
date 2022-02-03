@@ -10,6 +10,7 @@ using System.Configuration;
 using System.Collections;
 using System.IO;
 using System.Security.Cryptography;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace MusicSchoolWeb.Controllers
 {
@@ -49,7 +50,7 @@ namespace MusicSchoolWeb.Controllers
         [HttpPost]
         public ActionResult AddAudio(Lesson lesson)
         {
-            bool msg = false;
+            string msg = "false";
             if (lesson.Audiofiles != null)
             {
                 string fileName = Path.GetFileName(lesson.Audiofiles.FileName);
@@ -85,49 +86,30 @@ namespace MusicSchoolWeb.Controllers
                     lesson.AudioFilename = lesson.Audiofiles.FileName;
                     lesson.Audiofiles.SaveAs(Server.MapPath("~/AudioFiles/" + fileName));
                     msg = manage.InsertAudioFiles(lesson);
-                    TempData["msgsuccess"] = "Yes";
+                    TempData["msg"] = msg;
                 }
-                TempData["msg"] = counter;
+                //TempData["msg"] = counter;
             }
             return RedirectToAction("UploadAudio","Home");
        }
         public ActionResult Lesson()
         {
-            using (SqlConnection con = new SqlConnection(CS))
-            {
-                SqlCommand cmd = new SqlCommand("spGetAllLession", con);
-                cmd.CommandType = CommandType.StoredProcedure;
-                con.Open();
-                SqlDataReader rdr = cmd.ExecuteReader();
-                while (rdr.Read())
-                {
-                    Lesson lesion = new Lesson();
-                    lesion.Id = Convert.ToInt32(rdr["Id"]);
-                    lesion.LessonName = rdr["LessionName"].ToString();
-                    lessons.Add(lesion);
-                }
-            }
-            return View(lessons); //
+            lessons = manage.GetLesson();
+            return View(lessons); 
         }
         public ActionResult AddLesson(Lesson lesson)
         {
-            string Query = "Insert into LessionMaster_tbl values ('" + lesson.LessonName + "')";
-            using (SqlConnection con = new SqlConnection(CS))
-            {
-                SqlCommand cmd = new SqlCommand(Query, con);
-                con.Open();
-                SqlDataReader rdr = cmd.ExecuteReader();
-                if(rdr.RecordsAffected==1)
+            string msg = manage.InsertLesson(lesson);
+                if(msg=="true")
                 {
-                    TempData["msgsuccess"] = "Yes";
+                    TempData["msg"] = msg;
                     return RedirectToAction("Lesson", "Admin");
                 }
                 else
                 {
-
-                }
+                TempData["msg"] = msg;
             }
-            return View();
+            return RedirectToAction("Lesson", "Admin");
         }
         public ActionResult Topics()
         {
@@ -139,40 +121,23 @@ namespace MusicSchoolWeb.Controllers
         }
         public ActionResult AddTopic(Lesson lesson)
         {
-            string Query = "Insert into Topics_tbl values ('" + lesson.LessonId + "','" + lesson.TopicName + "')";
-            using (SqlConnection con = new SqlConnection(CS))
-            {
-                SqlCommand cmd = new SqlCommand(Query, con);
-                con.Open();
-                SqlDataReader rdr = cmd.ExecuteReader();
-                if (rdr.RecordsAffected == 1)
-                {
-                    TempData["msgsuccess"] = "Yes";
-                    return RedirectToAction("Topics", "Admin");
-                }
-            }
-            return View();
+            string msg = "false";
+            msg = manage.InsertTopic(lesson);
+            TempData["msg"] = msg;
+            return RedirectToAction("Topics", "Admin");
         }
         public ActionResult DeleteTopic(string id)
         {
-            bool status = false;
+            string status = "false";
             status = manage.deletetopic(id);
-            if (status == true)
-            {
-                TempData["msgdelete"] = "Yes";
-                return RedirectToAction("Topics", "Admin");
-            }
-            return View();
+            TempData["msg"] =status;
+            return RedirectToAction("Topics", "Admin");
         }
         public ActionResult DeleteLession(string id)
         {
-            bool status = false;
+            string status = "false";
             status = manage.deletelession(id);
-            if (status == true)
-            {
-                TempData["msgdelete"] = "Yes";
-                return RedirectToAction("Lesson", "Admin");
-            }
+            TempData["msg"] = status;
             return RedirectToAction("Lesson", "Admin");
         }
         public JsonResult GetTopics(string lasson)
@@ -206,14 +171,10 @@ namespace MusicSchoolWeb.Controllers
         }
         public ActionResult DeleteAudio(string id)
         {
-            bool status = false;
+            string status = "false";
             status = manage.deleteaudio(id);
-            if (status == true)
-            {
-                TempData["msgdelete"] = "Yes";
+              TempData["msg"] = status;
                 return RedirectToAction("UploadAudio", "Home");
-            }
-            return View();
         }
     }
     }

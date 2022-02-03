@@ -50,33 +50,34 @@
                                 <div class="row">
                                     @if (TempData["msg"] != null)
                                     {
-                                        if (TempData["msg"].ToString() == "1")
+                                        if (TempData["msg"].ToString() == "exist")
                                         {
                                             <div class="alert alert-danger">
-                                                <p>This Sound Files Already Exists in the Playlist !</p>
+                                                <p>This Sound File is Already Exists for this Lesson and Topic !</p>
                                             </div>
                                         }
-                                    }
-                                    @if (TempData["msgdelete"] != null)
-                                    {
-                                        if (TempData["msgdelete"].ToString() == "Yes")
+                                        if (TempData["msg"].ToString() == "delete")
                                         {
                                             <div class="alert alert-success">
                                                 <p>Selected Music Files Has Been Successfully Deleted !</p>
                                             </div>
                                         }
-                                    }
-                                    @if (TempData["msgsuccess"] != null)
-                                    {
-                                        if (TempData["msgsuccess"].ToString() == "Yes")
+
+                                        if (TempData["msg"].ToString() == "true")
                                         {
                                             <div class="alert alert-warning">
                                                 <p>Music Files Have Been Successfully Uploaded !</p>
                                             </div>
                                         }
+                                        if (TempData["msg"].ToString() == "false")
+                                        {
+                                            <div class="alert alert-warning">
+                                                <p>Something went wrong!</p>
+                                            </div>
+                                        }
                                     }
                                     <a href="/Admin/AddAudio">
-                                     <i class="fa fa-plus-circle"></i> Add New
+                                        <i class="fa fa-plus-circle"></i> Add New
                                     </a>
                                     <div class="modal fade" id="myModal">
                                         <div class="modal-dialog">

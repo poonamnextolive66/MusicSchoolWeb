@@ -14,5 +14,6 @@ namespace MusicSchoolWeb.Models
         public int TopicId { get; set; }
         public string AudioFilename { get; set; }
         public HttpPostedFileBase Audiofiles { get; set; }
+        public int status { get; set; }
     }
 }

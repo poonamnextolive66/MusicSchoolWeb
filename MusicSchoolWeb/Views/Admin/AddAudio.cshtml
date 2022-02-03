@@ -12,21 +12,21 @@
             <label>Choose File:</label>
             <div class="input-group">
                 <div class="custom-file">
-                    <select name="LessonId" id="LessonId">
+                    <select name="LessonId" id="LessonId" required>
                         <option value="0">Select Lesson</option>
                     </select>
                     <label class="custom-file-label">Lasson </label>
                 </div>
 
                 <div class="custom-file">
-                    <select name="TopicId" id="TopicId">
+                    <select name="TopicId" id="TopicId" required>
                         <option value="0">Select Topic</option>
                     </select>
                     <label class="custom-file-label">Topic </label>
                 </div>
 
                 <div class="custom-file">
-                    <input type="file" name="Audiofiles" id="Audiofiles" />
+                    <input type="file" name="Audiofiles" id="Audiofiles" required/>
                     <label class="custom-file-label">Audio </label>
                 </div>
                 <div class="input-group-append">
@@ -45,6 +45,7 @@
             dataType: "json",
             success: function (topic) {
                 $('#LessonId').html("");
+                $('#LessonId').append('<option value="">Select Lesson</option>');
                 $('#LessonId').append(topic);
             }
         });
@@ -56,6 +57,7 @@
                 data: { lasson: lasson },
                 success: function (topic) {
                     $('#TopicId').html("");
+                    $('#TopicId').append('<option value="">Select Topic</option>');
                     $('#TopicId').append(topic);
                 }
             });

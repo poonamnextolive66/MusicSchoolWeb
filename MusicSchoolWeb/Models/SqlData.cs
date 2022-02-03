@@ -36,16 +36,16 @@ namespace MusicSchoolWeb.Models
             sqlDa.Fill(dtbl);
             return dtbl;
         }
-        public bool Delete(string sql)
+        public string Delete(string sql)
         {
-            bool status = false;
+            string status = "false";
             try { 
           
                 SqlCommand cmd = new SqlCommand(sql, con);
                 con.Open();
                 cmd.ExecuteNonQuery();
                 con.Close();
-                status = true;
+                status = "delete";
                     }
             catch(Exception ex)
             {
@@ -70,15 +70,15 @@ namespace MusicSchoolWeb.Models
             }
             return audiolist;
         }
-        public bool InsertUpdateDelete(string query)
+        public string InsertUpdateDelete(string query)
         {
-            bool msg = false;
+            string msg = "false";
             SqlCommand cmd = new SqlCommand(query, con);
                 con.Open();
                 SqlDataReader rdr = cmd.ExecuteReader();
                 if (rdr.RecordsAffected == 1)
                 {
-                msg = true;
+                msg = "true";
                 }
             return msg;
         }

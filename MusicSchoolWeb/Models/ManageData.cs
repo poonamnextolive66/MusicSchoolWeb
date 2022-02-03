@@ -18,7 +18,7 @@ namespace MusicSchoolWeb.Models
             dtContainer = new DataTable();
             try
             {
-                string query = "select * FROM LessionMaster_tbl ";
+                string query = "select * FROM LessionMaster_tbl";
                 dtContainer = db.DataTable(query);
                 if (dtContainer.Rows.Count > 0)
                 {
@@ -27,6 +27,7 @@ namespace MusicSchoolWeb.Models
                         Lesson topic = new Lesson();
                         topic.LessonId = Convert.ToInt32(rdr["Id"]);
                         topic.LessonName = rdr["LessionName"].ToString();
+                        topic.status = 1;
                         retval.Add(topic);
                     }
                 }
@@ -135,23 +136,23 @@ namespace MusicSchoolWeb.Models
             }
             return retval;
         }
-        public bool deletetopic(string id)
+        public string deletetopic(string id)
         {
-            bool status = false;
+            string status = "false";
             string Query = "Delete From Topics_tbl Where Id = " + id;
             status = db.Delete(Query);
             return status;
         }
-        public bool deletelession(string id)
+        public string deletelession(string id)
         {
-            bool status = false;
+            string status = "false";
             string Query = "Delete From LessionMaster_tbl Where Id = " + id;
             status = db.Delete(Query);
             return status;
         }
-        public bool deleteaudio(string id)
+        public string deleteaudio(string id)
         {
-            bool status = false;
+            string status = "false";
             string Query = "Delete From Audio_tbl Where Id = " + id;
             status = db.Delete(Query);
             return status;
@@ -193,11 +194,53 @@ namespace MusicSchoolWeb.Models
             audiolist = db.GetData(query);
             return audiolist;
         }
-        public bool InsertAudioFiles(Lesson lesson)
+        public string InsertAudioFiles(Lesson lesson)
         {
-            bool msg = false;
-            string Query = "Insert into Audio_tbl values ('" + lesson.LessonId + "','" + lesson.TopicId + "','" + lesson.AudioFilename + "')";
-            msg = db.InsertUpdateDelete(Query);
+            string msg = "false";
+            string selectquery = "select * from Audio_tbl where LessionId='" + lesson.LessonId + "'and TopicId='"+lesson.TopicId+ "'";
+            DataTable dt = db.DataTable(selectquery);
+            if (dt.Rows.Count == 0)
+            {
+                string Query = "Insert into Audio_tbl values ('" + lesson.LessonId + "','" + lesson.TopicId + "','" + lesson.AudioFilename + "')";
+                msg = db.InsertUpdateDelete(Query);
+            }
+            else
+            {
+                msg = "exist";
+            }
+            return msg;
+        }
+
+        public string InsertLesson(Lesson lesson)
+        {
+            string msg = "false";
+            string selectquery = "select * from LessionMaster_tbl where LessionName='" + lesson.LessonName + "'";
+            DataTable dt = db.DataTable(selectquery);
+            if(dt.Rows.Count==0)
+            {
+                string Query = "Insert into LessionMaster_tbl values ('" + lesson.LessonName + "')";
+                msg = db.InsertUpdateDelete(Query);
+            }
+            else
+            {
+                msg = "exist";
+            }
+            return msg;
+        }
+        public string InsertTopic(Lesson lesson)
+        {
+            string msg = "false";
+            string selectquery = "select * from Topics_tbl where LessionId='" + lesson.LessonId + "' and TopicName='"+lesson.TopicName+"'";
+            DataTable dt = db.DataTable(selectquery);
+            if (dt.Rows.Count == 0)
+            {
+                string Query = "Insert into Topics_tbl values ('" + lesson.LessonId + "','" + lesson.TopicName + "')";
+                msg = db.InsertUpdateDelete(Query);
+            }
+            else
+            {
+                msg = "exist";
+            }
             return msg;
         }
     }
