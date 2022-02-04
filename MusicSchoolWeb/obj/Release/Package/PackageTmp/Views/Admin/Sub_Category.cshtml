@@ -50,7 +50,7 @@
                                                 if (data.LessonId == data1.LessionId)
                                                 {
                                                     <ul>
-                                                        <li tabindex="1"> <a href="#" class="facey">@j @data1.TopicName</a></li>
+                                                        <li tabindex="1"> <a href="#" class="facey" onclick="getTopic(@data.LessonId,@data1.Id)">@j @data1.TopicName</a></li>
                                                     </ul>
                                                     j = j + 0.1;
                                                 }
@@ -65,7 +65,7 @@
                 </div>
             </div>
             <div class="row text-center">
-                <a href="/User/Play_Match_Pitch" class="btn btn-primary">Next </a>
+                <a class="btn btn-primary" id="next">Next </a>
             </div>
         </div>
     </div><!-- End Blog Page -->
@@ -86,3 +86,10 @@
     </style>
 
 </main><!-- End #main -->
+<script src="~/assets/js/jquery-1.7.1.min.js"></script>
+<script>
+        function getTopic(lessonId, topicId) {
+            $("#next").attr("href", "");
+            $("#next").attr("href", "/User/Play_Match_Pitch?lessonId=" + lessonId + "&topicId=" + topicId + "");
+        }
+</script>

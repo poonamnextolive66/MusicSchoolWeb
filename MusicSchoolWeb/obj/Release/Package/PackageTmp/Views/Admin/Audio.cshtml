@@ -1,8 +1,9 @@
 ﻿
 @{
-    ViewBag.Title = "UploadAudio";
+    ViewBag.Title = "Audio";
     Layout = "~/Views/Shared/AdminLayout.cshtml";
 }
+<h2>Audio</h2>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,14 +18,11 @@
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
     <script>
-        $(document).ready(function ()
-        {
+        $(document).ready(function () {
             $('#dataTable').DataTable();
 
-            $("audio").on("play", function ()
-            {
-                $("audio").not(this).each(function (index, audio)
-                {
+            $("audio").on("play", function () {
+                $("audio").not(this).each(function (index, audio) {
                     audio.pause();
                 });
 
@@ -50,35 +48,35 @@
                                 <div class="row">
                                     @if (TempData["msg"] != null)
                                     {
-                                        if (TempData["msg"].ToString() == "exist")
+                                        if (TempData["msg"].ToString() == "1")
                                         {
                                             <div class="alert alert-danger">
-                                                <p>This Sound File is Already Exists for this Lesson and Topic !</p>
+                                                <p>This Sound Files Already Exists in the Playlist !</p>
                                             </div>
                                         }
-                                        if (TempData["msg"].ToString() == "delete")
+                                    }
+                                    @if (TempData["msgdelete"] != null)
+                                    {
+                                        if (TempData["msgdelete"].ToString() == "Yes")
                                         {
                                             <div class="alert alert-success">
                                                 <p>Selected Music Files Has Been Successfully Deleted !</p>
                                             </div>
                                         }
-
-                                        if (TempData["msg"].ToString() == "true")
+                                    }
+                                    @if (TempData["msgsuccess"] != null)
+                                    {
+                                        if (TempData["msgsuccess"].ToString() == "Yes")
                                         {
                                             <div class="alert alert-warning">
                                                 <p>Music Files Have Been Successfully Uploaded !</p>
                                             </div>
                                         }
-                                        if (TempData["msg"].ToString() == "false")
-                                        {
-                                            <div class="alert alert-warning">
-                                                <p>Something went wrong!</p>
-                                            </div>
-                                        }
                                     }
-                                    <a href="/Admin/AddAudio">
+                                    <button type="button" class="btn btn-primary rounded-0" data-toggle="modal" data-target="#myModal">
                                         <i class="fa fa-plus-circle"></i> Add New
-                                    </a>
+                                    </button>
+
                                     <div class="modal fade" id="myModal">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
@@ -86,17 +84,32 @@
                                                     <h4 class="modal-title">Upload New Audio File</h4>
                                                 </div>
                                                 <div class="modal-body">
-                                                    @using (Html.BeginForm("UploadAudio", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                                    @using (Html.BeginForm("UploadAudio", "Admin", FormMethod.Post))
                                                     {
                                                         <div class="form-group">
                                                             <label>Choose File:</label>
                                                             <div class="input-group">
+                                                                @Html.TextBoxFor(m => m.LessonId)
                                                                 <div class="custom-file">
-                                                                    <input type="file" id="fileupload" name="fileupload" class="custom-file-input" />
-                                                                    <label class="custom-file-label"></label>
+                                                                    <select name="LessonId" id="LessonId">
+                                                                        <option value="0">Select Lesson</option>
+                                                                    </select>
+                                                                    <label class="custom-file-label">Lasson </label>
+                                                                </div>
+
+                                                                <div class="custom-file">
+                                                                    <select name="TopicName" id="TopicName">
+                                                                        <option value="0">Select Topic</option>
+                                                                    </select>
+                                                                    <label class="custom-file-label">Topic </label>
+                                                                </div>
+
+                                                                <div class="custom-file">
+                                                                    <input type="file" name="Audiofiles" id="Audiofiles" />
+                                                                    <label class="custom-file-label">Audio </label>
                                                                 </div>
                                                                 <div class="input-group-append">
-                                                                    <input type="submit" id="btnUpload" class="btn btn-secondary" value="Upload" />
+                                                                    <input type="submit" class="btn btn-secondary" value="Upload" />
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -113,9 +126,9 @@
                                     <thead>
                                         <tr>
                                             <th>ID</th>
-                                            <th>Lesson Name</th>
-                                            <th>Topic Name</th>
-                                            <th>Audio</th>
+                                            <th>Name</th>
+                                            <th>File Size(MB)</th>
+                                            <th>Play Audio</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -123,21 +136,21 @@
                                         @{
                                             int i = 1;
                                         }
-                                        @foreach (var item in Model)
-                                        {
+                                        @*@foreach (var item in Model)
+                                            {*@
                                         <tr>
-                                            <td>@i</td>
-                                            <td>@item.LessonName</td>
-                                            <td>@item.TopicName</td>
-                                            <td>
-                                                <audio controls>
-                                                    <source src="~/RawFiles/@item.AudioFilename" type="audio/ogg">
-                                                </audio>
-                                            </td>
-                                            <td><a href="/Admin/DeleteAudio/@item.Id">Delete</a></td>
+                                            @*<td>@i</td>
+                                                <td>@item.Name</td>
+                                                <td>@item.FileSize</td>
+                                                <td>
+                                                    <audio controls>
+                                                        <source src="@Url.Content(@item.FilePath)" type="audio/ogg">
+                                                    </audio>
+                                                </td>
+                                                <td>@Html.ActionLink("Delete", "Delete", new { i = item.ID, filenames = item.Name })</td>*@
                                         </tr>
-                                            i++;
-                                        }
+                                        @*i++;
+                                            }*@
                                     </tbody>
                                 </table>
                             </div>
@@ -151,3 +164,29 @@
     </main>
 </body>
 </html>
+<script src="~/assets/js/jquery-1.7.1.min.js"></script>
+<script>
+
+    $(document).ready(function () {
+        $.ajax({
+            type: "GET",
+            url: "/Admin/GetLesson",
+            dataType: "json",
+            success: function (topic) {
+                $('#LessonId').append(topic);
+            }
+        });
+        $("#LessonId").change(function () {
+            var lasson = $("#LessonId").val();
+            $.ajax({
+                type: "Post",
+                url: "/Admin/GetTopics",
+                data: { lasson: lasson },
+                success: function (topic) {
+                    $('#TopicName').append(topic);
+                }
+            });
+        });
+    });
+</script>
+

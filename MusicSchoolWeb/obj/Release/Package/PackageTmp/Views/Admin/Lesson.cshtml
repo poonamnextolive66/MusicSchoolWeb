@@ -34,31 +34,28 @@
                                 <div class="row">
                                     @if (TempData["msg"] != null)
                                     {
-                                        if (TempData["msg"].ToString() == "1")
+                                        if (TempData["msg"].ToString() == "exist")
                                         {
                                             <div class="alert alert-danger">
                                                 <p>This Lesson Already Exists in the Lesson !</p>
-
                                             </div>
                                         }
-                                    }
-
-                                    @if (TempData["msgdelete"] != null)
-                                    {
-                                        if (TempData["msgdelete"].ToString() == "Yes")
+                                        if (TempData["msg"].ToString() == "delete")
                                         {
                                             <div class="alert alert-success">
                                                 <p>Selected Lesson Has Been Successfully Deleted !</p>
                                             </div>
                                         }
-                                    }
-
-                                    @if (TempData["msgsuccess"] != null)
-                                    {
-                                        if (TempData["msgsuccess"].ToString() == "Yes")
+                                        if (TempData["msg"].ToString() == "true")
                                         {
                                             <div class="alert alert-warning">
                                                 <p>Lesson Have Been Successfully Uploaded !</p>
+                                            </div>
+                                        }
+                                        if (TempData["msg"].ToString() == "false")
+                                        {
+                                            <div class="alert alert-warning">
+                                                <p>Something went wrong!</p>
                                             </div>
                                         }
                                     }
@@ -79,7 +76,7 @@
                                                             <label>Lesson:</label>
                                                             <div class="input-group">
                                                                 <div class="custom-file">
-                                                                    <input type="text" id="LessonName" name="LessonName" class="custom-file-input" />
+                                                                    <input type="text" id="LessonName" name="LessonName" class="custom-file-input" required/>
                                                                     <label class="custom-file-label"></label>
                                                                 </div>
                                                                 <div class="input-group-append">
@@ -109,15 +106,30 @@
                                         @{
                                             int i = 1;
                                         }
-                                        @foreach (var item in Model)
+                                        @if (Model != null)
+                                        {
+                                            foreach (var item in Model)
+                                            {
+
+                                                <tr>
+                                                    <td>@i</td>
+                                                    <td>@item.LessonName</td>
+
+                                                    <td>@Html.ActionLink("Delete", "DeleteLession", new { id = item.LessonId })</td>
+                                                </tr>
+                                                i++;
+
+
+
+
+
+                                            }
+                                        }
+                                        else
                                         {
                                             <tr>
-                                                <td>@i</td>
-                                                <td>@item.LessonName</td>
-
-                                                <td>@Html.ActionLink("Delete", "DeleteLession", new { id = item.Id })</td>
+                                               <th colspan="3"> Record Not Found!..</th>
                                             </tr>
-                                            i++;
                                         }
                                     </tbody>
                                 </table>

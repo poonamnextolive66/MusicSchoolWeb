@@ -233,6 +233,42 @@
         #controls > button#stopButton:hover {
             background: #2b94df;
         }
+    .alert.alert-success {
+        background: #22224aeb;
+        text-align: center;
+        height: auto !important;
+    }
+
+        .alert.alert-success h1 {
+            position: static;
+            text-shadow: none;
+            font-weight: normal;
+        }
+        .alert.alert-success h1 {
+            position: static;
+            text-shadow: none;
+            font-weight: normal;
+            text-decoration: none;
+            line-height: 1.2;
+        }
+            .alert.alert-success h1:first-child {
+                font-size: 70px;
+                margin-bottom: 30px;
+            }
+
+        .alert.alert-success a {
+            display: inline-block;
+            background: #a5a532;
+            font-weight: normal !important;
+            padding: 10px 30px;
+            margin-top: 40px;
+            color: #fff;
+            text-shadow: none !important;
+            margin-bottom: 20px;
+            font-size: 18px
+        }
+
+            
 </style>
 <body>
     <div id="content">
@@ -302,8 +338,8 @@
                             }
 
                             @*<audio controls="controls">
-                                    <source src="~/AudioFiles/2022-01-27%2010_00%20(1).wav  />
-                                </audio>*@
+                            <source src="~/AudioFiles/2022-01-27%2010_00%20(1).wav  />
+                        </audio>*@
                         </td>
                     </tr>
                     <tr><th>Recorded Audio</th></tr>
@@ -351,27 +387,29 @@
             {
                 if (TempData["CompareMessage"].ToString() == "1")
                 {
+                    <div class="alert alert-success" style="height: 250px; width: 100%">
+                        <div class="text-center">
+                            <h1>100%</h1>
+                            <h1> Perfect ! 100% At This Lesson</h1>
+                            <a href="/Admin/Sub_Category">Click Here For Next Lesson</a>
+                        </div>
 
+
+                    </div>
                 }
                 if (TempData["CompareMessage"].ToString() == "0")
                 {
-                    <div class="alert alert-warning">
-                        <p> The Tune is not Matched and Returned False. !</p>
+                    <div class="alert alert-success" style="height: 250px; width: 100%">
+                        <div class="text-center">
+                            <h3 style="color:white">The Tune is not Matched and Returned False. !</h3>
+                            <a onclick="Getpianoagain()">Click Here For Try Again!</a>
+                        </div>
+
+
                     </div>
                 }
             }
-        <div class="alert alert-success" style="height: 250px; width: 600px;">
-            <div class="text-center">
-                <h1> Perfect ! 100% At This Lesson</h1>
-            </div>
-            <br /><br /><br /><br />
-           
-                              <div class="btn btn-primary" style="text-align:center">
-                                  <div class="text-center">
-                                      <a href="/Admin/Sub_Category"><h3> Click Here For Next Lesson</h3></a>
-                                  </div>
-                              </div>
-        </div>
+
             <div class="" id="Modal">
                 <script src="~/assets/js/jquery-1.7.1.min.js"></script>
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -591,6 +629,10 @@
     function data() {
         let lis = document.getElementById('recordingsList').getElementsByTagName('li');
         alert(lis);
+    }
+    function Getpianoagain() {
+        var urlString = window.location.href;
+        window.location = urlString;
     }
 </script>
 
