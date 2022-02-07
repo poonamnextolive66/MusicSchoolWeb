@@ -31,7 +31,7 @@
                     <div class="col-md-12 col-sm-12 col-xs-12">
                         <div class="well-middle">
                             <div class="single-well">
-                                <div class="row">
+                                <div class="row" style="margin:0;">
                                     @if (TempData["msg"] != null)
                                     {
                                         if (TempData["msg"].ToString() == "exist")
@@ -59,15 +59,16 @@
                                             </div>
                                         }
                                     }
-                                    <button type="button" class="btn btn-primary rounded-0" data-toggle="modal" data-target="#myModal">
+                                    <button type="button" class="btn btn-primary rounded-0" data-toggle="modal" data-target="#myModal" style="width:auto;margin-bottom:20px;">
                                         <i class="fa fa-plus-circle"></i> Add New
                                     </button>
 
-                                    <div class="modal fade" id="myModal">
+                                    <div class="modal fade lesson" id="myModal">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <h4 class="modal-title">Add New Lesson</h4>
+                                                    <button type="button" class="btn btn-danger" data-dismiss="modal">&nbsp;&nbsp;X&nbsp;&nbsp;</button>
                                                 </div>
                                                 <div class="modal-body">
                                                     @using (Html.BeginForm("AddLesson", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
@@ -76,7 +77,7 @@
                                                             <label>Lesson:</label>
                                                             <div class="input-group">
                                                                 <div class="custom-file">
-                                                                    <input type="text" id="LessonName" name="LessonName" class="custom-file-input" required/>
+                                                                    <input type="text" id="LessonName" name="LessonName" class="custom-file-input" required />
                                                                     <label class="custom-file-label"></label>
                                                                 </div>
                                                                 <div class="input-group-append">
@@ -86,9 +87,6 @@
                                                             </div>
                                                         </div>
                                                     }
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-danger" data-dismiss="modal">&nbsp;&nbsp;X&nbsp;&nbsp;</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -128,7 +126,7 @@
                                         else
                                         {
                                             <tr>
-                                               <th colspan="3"> Record Not Found!..</th>
+                                                <th colspan="3"> Record Not Found!..</th>
                                             </tr>
                                         }
                                     </tbody>

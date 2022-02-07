@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css" />
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
-    
+
 </head>
 <body>
     <main id="main">
@@ -33,7 +33,7 @@
                     <div class="col-md-12 col-sm-12 col-xs-12">
                         <div class="well-middle">
                             <div class="single-well">
-                                <div class="row">
+                                <div class="row" style="margin:0;">
                                     @if (TempData["msg"] != null)
                                     {
                                         if (TempData["msg"].ToString() == "exist")
@@ -61,15 +61,16 @@
                                             </div>
                                         }
                                     }
-                                    <button type="button" class="btn btn-primary rounded-0" data-toggle="modal" data-target="#myModal">
+                                    <button type="button" class="btn btn-primary rounded-0" data-toggle="modal" data-target="#myModal" style="width: auto; margin-bottom: 20px; ">
                                         <i class="fa fa-plus-circle"></i> Add New
                                     </button>
 
-                                    <div class="modal fade" id="myModal">
+                                    <div class="modal fade topics" id="myModal">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <h4 class="modal-title">Add New Topic</h4>
+                                                    <button type="button" class="btn btn-danger" data-dismiss="modal">&nbsp;&nbsp;X&nbsp;&nbsp;</button>
                                                 </div>
                                                 <div class="modal-body">
                                                     @using (Html.BeginForm("AddTopic", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
@@ -80,19 +81,19 @@
                                                                 <div class="custom-file">
                                                                     <select name="LessonId" id="LessonId" required>
                                                                         <option value="">Select Lesson</option>
-                                                                        @if(ViewBag.lesson!=null)
+                                                                        @if (ViewBag.lesson != null)
                                                                         {
-                                                                        foreach (Lesson src in ViewBag.lesson)
-                                                                        {
-                                                                        <option value=" @src.LessonId"> @src.LessonName</option>
-                                                                        }
+                                                                            foreach (Lesson src in ViewBag.lesson)
+                                                                            {
+                                                                                <option value=" @src.LessonId"> @src.LessonName</option>
+                                                                            }
                                                                         }
                                                                     </select>
                                                                     <label class="custom-file-label"></label>
                                                                 </div>
                                                                 <div class="custom-file">
                                                                     <label>Topic Name</label>
-                                                                    <input type="text" id="TopicName" name="TopicName" class="custom-file-input" required/>
+                                                                    <input type="text" id="TopicName" name="TopicName" class="custom-file-input" required />
                                                                     <label class="custom-file-label"></label>
                                                                 </div>
                                                                 <div class="input-group-append">
@@ -102,9 +103,7 @@
                                                         </div>
                                                     }
                                                 </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-danger" data-dismiss="modal">&nbsp;&nbsp;X&nbsp;&nbsp;</button>
-                                                </div>
+
                                             </div>
                                         </div>
                                     </div>

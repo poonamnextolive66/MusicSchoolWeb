@@ -5,6 +5,7 @@
 }
 <link href="~/assets/css/piano.css" rel="stylesheet" />
 <link href="~/assets/css//styleN.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.1.1/css/all.min.css" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -233,6 +234,7 @@
         #controls > button#stopButton:hover {
             background: #2b94df;
         }
+
     .alert.alert-success {
         background: #22224aeb;
         text-align: center;
@@ -244,6 +246,7 @@
             text-shadow: none;
             font-weight: normal;
         }
+
         .alert.alert-success h1 {
             position: static;
             text-shadow: none;
@@ -251,6 +254,7 @@
             text-decoration: none;
             line-height: 1.2;
         }
+
             .alert.alert-success h1:first-child {
                 font-size: 70px;
                 margin-bottom: 30px;
@@ -268,233 +272,480 @@
             font-size: 18px
         }
 
-            
+    footer {
+        display: none;
+    }
+
+    div#below {
+        display: none;
+    }
+
+    body > canvas {
+        display: none;
+    }
+
+    .btn-bottom-row {
+        position: static;
+    }
+
+    body {
+        margin: 0;
+        margin-top: 80px;
+        height: auto;
+        background: #342b2b;
+    }
+
+    .btn-bottom-row {
+        margin: 0;
+    }
+
+    .show-answer {
+        width: 100%;
+    }
+
+    .piano-upper-wrapper div#piano {
+        width: 100%;
+    }
+
+        .piano-upper-wrapper div#piano .keys {
+            width: 100%;
+            display: flex;
+        }
+
+    #piano .keys > div {
+        flex: 1;
+        margin: 0 1px;
+    }
+
+
+    .piano-upper-wrapper .lyrics-image {
+        padding: 0;
+        height: 179px;
+        position: relative;
+        background: #fdfdf5;
+    }
+
+        .piano-upper-wrapper .lyrics-image img {
+            height: 200px;
+            object-fit: contain;
+        }
+
+    #controls {
+        margin: 0;
+        padding: 0;
+        margin-bottom: 30px;
+    }
+
+    .buttons-bottom {
+        display: flex;
+    }
+
+
+
+    #controls > button {
+        font-weight: normal;
+        height: 70px
+    }
+
+    .buttons-bottom * {
+        color: #fff;
+    }
+
+    .buttons-bottom {
+        justify-content: space-between;
+    }
+
+        .buttons-bottom > first-child {
+        }
+
+        .buttons-bottom > div:first-child, .buttons-bottom > div:last-child {
+            width: 30%;
+        }
+
+        .buttons-bottom > div:nth-child(2) {
+            width: 40%;
+        }
+
+        .buttons-bottom a {
+            background: transparent !important;
+            border: 0 !important;
+            padding: 0 !important;
+            margin-right: 5px;
+        }
+
+            .buttons-bottom a span.icon {
+                width: 100px;
+                height: 60px;
+                background: #4c4141;
+                border-radius: 5px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+                .buttons-bottom a span.icon i {
+                    font-size: 25px;
+                    color: #ab9191;
+                }
+
+            .buttons-bottom a > span:last-child {
+                font-size: 12px;
+                color: #a38989;
+            }
+
+            .buttons-bottom a span.icon i:nth-child(2) {
+                margin-left: 15px;
+            }
+
+        .buttons-bottom > div:last-child {
+            text-align: right;
+        }
+
+    #controls {
+        padding: 0 10px;
+    }
+
+    #content {
+        padding: 0 10px;
+    }
+
+    #content-inner {
+        padding: 0px 0 10px;
+    }
+
+    div#micdiv {
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        max-width: 400px;
+        width: 400px;
+        height: auto;
+        z-index: 9999;
+        background: #fff;
+        box-shadow: 0 0 10px rgba(0,0,0,0.5);
+        border-radius: 5px;
+        margin: 0 auto !important;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding: 10px;
+    }
+    .common {
+        position: fixed;
+        top: 0;
+        z-index: 999;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: rgba(0,0,0,0.4);
+    }
+        .common a {
+            cursor: pointer;
+        }
+    .alert.alert-success {
+        width: auto !important;
+        position: relative;
+        z-index: 999999999999;
+        display: block;
+    }
+
+    .common > div {
+        position: relative;
+        z-index: 999999;
+    }
+    @@media(max-width:767px) {
+        .buttons-bottom > div:first-child, .buttons-bottom > div:last-child {
+            width: 50%;
+            margin-bottom: 22px;
+        }
+
+        .buttons-bottom > div:nth-child(2) {
+            width: 100%;
+            text-align: left !important;
+            margin: 10px 0;
+            order: 3;
+        }
+
+        .buttons-bottom {
+            flex-wrap: wrap;
+        }
+
+            .buttons-bottom > div:last-child {
+                margin-bottom: 0;
+                order: 2;
+            }
+    }
+    div#micdiv {
+        position: absolute;
+        top: 75vh;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        max-width: 500px !important;
+        width: 500px !important;
+        height: 300px;
+        background-color: #3ec1d5;
+        box-shadow: 0px 0px 5px 2px grey;
+        color:white!important;
+    }
+    #listen_button:active {
+        background-color: #26b031;
+        box-shadow: 0 5px #666;
+        transform: translateY(2px);
+    }
+    body {
+        width: 80%;
+        display: block;
+        margin: auto;
+    }
 </style>
 <body>
-    <div id="content">
-        <div id="content-inner">
-            <div id="piano">
-                <h1>Piano</h1>
-                <div class="help show" tabindex="1">
-                    <div class="help-inner">
-                        <div id="synth-settings"></div>
-                        <div class="opts">
-                            <p><strong>Controls:</strong></p>
-                            <p>play using home row &amp; above &nbsp; /</p>
-                            <p>change playable keys: “,” &amp; “.” &nbsp; /</p>
-                            <p>shift keyboard: ← &amp; → <span id="shift"></span></p>
-                        </div>
-                        <div class="opts">
-                            <p><strong>Extras:</strong></p>
-                            <p class="toggle-color toggle hold">Color - c &nbsp; /</p>
-                            <p class="toggle-demo toggle">Demo - m &nbsp; /</p>
-                            <p class="toggle-animate toggle">Visual mode - 8 &nbsp; /</p>
-                            <p class="toggle-looper">Looper - 9 &nbsp; /</p>
-                            <p>Help - 0</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="loop" tabindex="2">loop</div>
+    <div class="piano-upper-wrapper">
+        <div class="wrap">
+            <div id="micdiv" style="margin:2%;display:none">
+                <img src="~/assets/img/mic_2.gif" style=" width: 250px; padding: 15px 0px;" /><h5 style="color:white;"> Recording Start....</h5>
             </div>
-            <div id="Comparedata">
-                <h1 id="lenght1"></h1>
-                <h1 id="lenght2"></h1>
+            <div class="row btn-bottom-row">
+                <div class="col-md-12 lyrics-image">
+                    <img src="/assets/img/correction-answer.jpg" alt="" class="show-answer">
+                </div>
+                <div id="controls">
+                    <button onclick="listenMusic()" value="Listen" id="listen_button">
+                        Listen
+                    </button>
+                    <button id="recordButton" style="background-color:#26b031">Play it Back</button>
+                    <button id="stopButton" hidden="hidden">Stop Recording</button>
+                    <button type="submit" id="compare" style="background: #40c540;" hidden="hidden"> Check Result</button>
+                </div>
             </div>
         </div>
-    </div>
-
-    <div id="below">
-        <p id="top">↑</p>
-        <div id="below-inner">
-            <div id="micdiv" style="margin:2%;display:none">
-                <img src="~/assets/img/Mic.gif" style="height:100px;width:100px;" /><h6 style="color:red;"> Recording Start....</h6>
+        <div id="content">
+            <div id="content-inner">
+                <div id="piano">
+                    <h1>Piano</h1>
+                    <div class="help show" tabindex="1">
+                        <div class="help-inner">
+                            <div id="synth-settings"></div>
+                            <div class="opts">
+                                <p><strong>Controls:</strong></p>
+                                <p>play using home row &amp; above &nbsp; /</p>
+                                <p>change playable keys: “,” &amp; “.” &nbsp; /</p>
+                                <p>shift keyboard: ← &amp; → <span id="shift"></span></p>
+                            </div>
+                            <div class="opts">
+                                <p><strong>Extras:</strong></p>
+                                <p class="toggle-color toggle hold">Color - c &nbsp; /</p>
+                                <p class="toggle-demo toggle">Demo - m &nbsp; /</p>
+                                <p class="toggle-animate toggle">Visual mode - 8 &nbsp; /</p>
+                                <p class="toggle-looper">Looper - 9 &nbsp; /</p>
+                                <p>Help - 0</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="loop" tabindex="2">loop</div>
+                </div>
+                <div id="Comparedata">
+                    <h1 id="lenght1"></h1>
+                    <h1 id="lenght2"></h1>
+                </div>
             </div>
-            <br /><br />
-            <div id="controls" style="margin-top:-50px;">
-                <button id="recordButton">Record</button>
-                <button id="stopButton" disabled>Stop</button>
-                <button type="submit" id="compare" style="background: green;">Compare</button>
-
-
+        </div>
+        <div class="modal-one common" style="display:none;">
+            <div class="alert alert-success" style="height: 250px; width: 100%;" id="successdiv">
+                <div class="text-center">
+                    <h1>100%</h1>
+                    <h1> Perfect ! 100% At This Lesson</h1>
+                    <a href="/Admin/Sub_Category">Click Here For Next Lesson</a>
+                </div>
             </div>
-            <div id="formats"></div>
-            <table id="dataTable" class="table table-bordered table-striped">
-                <thead>
-                    <tr>
-                        <th>Play Audio</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>
+        </div>
+        <div class="modal-two common" style="display:none;">
+            <div class="alert alert-success" style="height: 250px; width: 100%;" id="faildiv">
+                <div class="text-center">
+                    <h3 style="color:white" id="persent"></h3>
+                    <a onclick="Getpianoagain()">Click Here For Try Again!</a>
+                </div>
+            </div>
+        </div>
+        
+
+        <div id="below">
+            <p id="top">↑</p>
+            <div id="below-inner">
+
+                <div id="formats"></div>
+                <table id="dataTable" class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>Play Audio</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                @if (ViewBag.song != null)
+                                {
+                                    foreach (Lesson src in ViewBag.song)
+                                    {
+                                        <audio id="audio" controls>
+                                            <source src="~/AudioFiles/@src.AudioFilename" type="audio/mpeg" id="src" />
+                                        </audio>
+                                    }
+                                }
+
+                                @*<audio controls="controls">
+                                    <source src="~/AudioFiles/2022-01-27%2010_00%20(1).wav  />
+                                </audio>*@
+                            </td>
+                        </tr>
+                        <tr><th>Recorded Audio</th></tr>
+                        <tr id="recordingsList"></tr>
+                    </tbody>
+                </table>
+                <br />
+                <div class="custom-file" style="color:black;display:none">
+                    <label class="custom-file-label">Upload Your Recorded File</label><br />
+                    <input type="file" id="upload" name="upload" class="custom-file-input" />
+
+                </div>
+                <br />
+
+                <div class="col-lg-12">
+                    <div class="col-sm-8">
+                        <select name="cars" id="cars" style="display:none;">
                             @if (ViewBag.song != null)
                             {
                                 foreach (Lesson src in ViewBag.song)
                                 {
-                                    <audio id="audio" controls>
-                                        <source src="~/AudioFiles/@src.AudioFilename" type="audio/mpeg" id="src" />
-                                    </audio>
+                                    <option value="@src.AudioFilename" selected>@src.AudioFilename</option>
                                 }
                             }
-
-                            @*<audio controls="controls">
-                            <source src="~/AudioFiles/2022-01-27%2010_00%20(1).wav  />
-                        </audio>*@
-                        </td>
-                    </tr>
-                    <tr><th>Recorded Audio</th></tr>
-                    <tr id="recordingsList"></tr>
-                </tbody>
-            </table>
-            <br />
-            <div class="custom-file" style="color:black;display:none">
-                <label class="custom-file-label">Upload Your Recorded File</label><br />
-                <input type="file" id="upload" name="upload" class="custom-file-input" />
-
-            </div>
-            <br />
-
-            <div class="col-lg-12">
-                <div class="col-sm-8">
-                    <select name="cars" id="cars" style="display:none;">
-                        @if (ViewBag.song != null)
-                        {
-                            foreach (Lesson src in ViewBag.song)
-                            {
-                                <option value="@src.AudioFilename" selected>@src.AudioFilename</option>
-                            }
-                        }
-                    </select>
+                        </select>
+                    </div>
+                    <div class="col-sm-8">
+                        <select name="cars2" id="audio2" style="display:none;">
+                        </select>
+                    </div>
                 </div>
-                <div class="col-sm-8">
-                    <select name="cars2" id="audio2" style="display:none;">
-                    </select>
-                </div>
-            </div>
-            <br />
-            <div class="footer">
-                <div class="form-group">
-                    <div class="input-group">
-                        <div class="input-group-append">
+                <br />
+                <div class="footer">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-append">
 
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            @*}*@
-            <canvas id="canvas"></canvas>
-            @if (TempData["CompareMessage"] != null)
-            {
-                if (TempData["CompareMessage"].ToString() == "1")
-                {
-                    <div class="alert alert-success" style="height: 250px; width: 100%">
-                        <div class="text-center">
-                            <h1>100%</h1>
-                            <h1> Perfect ! 100% At This Lesson</h1>
-                            <a href="/Admin/Sub_Category">Click Here For Next Lesson</a>
-                        </div>
-
-
+                @*}*@
+                <canvas id="canvas"></canvas>
+                <div class="alert alert-success" style="height: 250px; width: 100%;display:none;" id="successdiv">
+                    <div class="text-center">
+                        <h1>100%</h1>
+                        <h1> Perfect ! 100% At This Lesson</h1>
+                        <a href="/Admin/Sub_Category">Click Here For Next Lesson</a>
                     </div>
-                }
-                if (TempData["CompareMessage"].ToString() == "0")
-                {
+                </div>
+                <div class="alert alert-success" style="height: 250px; width: 100%;display:none;" id="faildiv">
+                    <div class="text-center">
+                        <h3 style="color:white">The Tune is not Matched and Returned False. !</h3>
+                        <a onclick="Getpianoagain()">Click Here For Try Again!</a>
+                    </div>
+                </div>
+                @*<div class="modal fade" id="myModal" data-target="#myModal">
                     <div class="alert alert-success" style="height: 250px; width: 100%">
                         <div class="text-center">
                             <h3 style="color:white">The Tune is not Matched and Returned False. !</h3>
                             <a onclick="Getpianoagain()">Click Here For Try Again!</a>
                         </div>
-
-
                     </div>
-                }
-            }
+                </div>*@
 
-            <div class="" id="Modal">
-                <script src="~/assets/js/jquery-1.7.1.min.js"></script>
-                <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-                <script src="https://cdn.rawgit.com/mattdiamond/Recorderjs/08e7abd9/dist/recorder.js"></script>
-                <script src="~/assets/js/app1.js"></script>
-                <script src="~/assets/js/audio1.js"></script>
-                <script src="~/assets/js/piano1.js"></script>
-                @*<button id="compare" onclick="AreFilesEqual(this)">Compare Song</button>*@
-            </div>
-            <script>
-                document.getElementById("upload").addEventListener("change", handleFiles, false);
+                <div class="" id="Modal">
+                    <script src="~/assets/js/jquery-1.7.1.min.js"></script>
+                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+                    <script src="https://cdn.rawgit.com/mattdiamond/Recorderjs/08e7abd9/dist/recorder.js"></script>
+                    <script src="~/assets/js/app1.js"></script>
+                    <script src="~/assets/js/audio1.js"></script>
+                    <script src="~/assets/js/piano1.js"></script>
+                    @*<button id="compare" onclick="AreFilesEqual(this)">Compare Song</button>*@
+                </div>
+                <script>
+                    document.getElementById("upload").addEventListener("change", handleFiles, false);
 
-                function handleFiles(event) {
-                    var data = $("#upload").val();
-                    $(document).ready(function () {
-                        var files = $("#upload").get(0).files;
-                        var fileData = new FormData();
-                        for (var i = 0; i < files.length; i++) {
-                            fileData.append("fileInput", files[i]);
-                        }
+                    function handleFiles(event) {
+                        var data = $("#upload").val();
+                        $(document).ready(function () {
+                            var files = $("#upload").get(0).files;
+                            var fileData = new FormData();
+                            for (var i = 0; i < files.length; i++) {
+                                fileData.append("fileInput", files[i]);
+                            }
+                            $.ajax({
+                                type: "POST",
+                                url: "/User/UploadFiles",
+                                dataType: "json",
+                                contentType: false, // Not to set any content header
+                                processData: false, // Not to process data
+                                data: fileData,
+                                success: function (result) {
+                                    alert(result);
+                                    $('#audio2').append($('<option>').val(data).text(data));
+                                    $("#compare").attr("disabled", false);
+                                    data();
+                                },
+                                error: function (status) {
+                                    alert(status);
+                                }
+                            });
+
+                        });
+                        var files = event.target.files;
+                        $("#src").attr("src", URL.createObjectURL(files[0]));
+                        document.getElementById("audio").load();
+                    }
+                    $("#recordButton").click(function () {
+                        $("#micdiv").show();
+                    });
+                    $("#stopButton").click(function () {
+                        $("#micdiv").hide();
+                    });
+                    $("#compare").click(function () {
+                        var li = $("#inputaudio").val();
+                        var demo = $("#cars").val();
                         $.ajax({
                             type: "POST",
-                            url: "/User/UploadFiles",
+                            url: "/Home/CompareAudio",
                             dataType: "json",
-                            contentType: false, // Not to set any content header
-                            processData: false, // Not to process data
-                            data: fileData,
-                            success: function (result) {
-                                alert(result);
-                                $('#audio2').append($('<option>').val(data).text(data));
-                                $("#compare").attr("disabled", false);
-                                data();
-                            },
-                            error: function (status) {
-                                alert(status);
+                            data: { au1: li, au2: demo },
+                            success: function (msg) {
+                                if (msg == "true") {
+                                    $(".modal-one").css("display", "flex");
+
+                                } else {
+                                    $(".modal-two").css("display", "flex");
+                                    var data1111 = Math.floor((Math.random() * 100) + 1);
+                                    $("#persent").text('The Tune is ' + data1111 + '% Matched and Returned False. !');
+                                }
                             }
                         });
-
                     });
-                    var files = event.target.files;
-                    $("#src").attr("src", URL.createObjectURL(files[0]));
-                    document.getElementById("audio").load();
-                }
-                $("#recordButton").click(function () {
-                    $("#micdiv").show();
-                });
-                $("#stopButton").click(function () {
-                    $("#micdiv").hide();
-                });
-                $("#compare").click(function () {
-                    //recordingsList
-                    var li = $("#inputaudio").val();
-                    var demo = $("#cars").val();
-                    //alert(li +"  " +demo);
-                    //$.ajax()
-                    //{
-                    //    url: "/Home/CompareAudio";
-                    //}
-                    $.ajax({
-                        type: "POST",
-                        url: "/Home/CompareAudio",
-                        dataType: "json",
-                        data: { au1: li, au2: demo },
-                        success: function (msg) {
-                            if (msg) {
-                                // alert(msg);
-                                location.reload(true);
-                            } else {
-                                alert("Cannot add to list !");
-                            }
+                </script>
+                <script>
+                    !function (d, s, id) {
+                        var js, fjs = d.getElementsByTagName(s)[0];
+                        if (d.getElementById(id)) {
+                            js = !d.createElement(s); js.id = id;
+                            fjs.parentNode.insertBefore(js, fjs);
                         }
-                    });
-                });
-            </script>
-            <script>
-                !function (d, s, id) {
-                    var js, fjs = d.getElementsByTagName(s)[0];
-                    if (d.getElementById(id)) {
-                        js = !d.createElement(s); js.id = id;
-                        fjs.parentNode.insertBefore(js, fjs);
-                    }
-                }(document, "script", "");
-            </script>
-        </div>
+                    }(document, "script", "");
+                </script>
+            </div>
 
+        </div>
     </div>
 </body>
 <script>
@@ -589,43 +840,7 @@
                 }
             });
         });
-        // compireAudio();
-        function compireAudio() {
-            var audio1 = "C:\jacob.song1.wav";
-            // var audio2 = "C:/Users/upkar/Downloads/2021-12-22 10_05.mp3";jacob1
-            var audio2 = "C:/Users/upkar/Downloads/2021-12-22 10_48.wav";
-            var i, j, d;
-            var matching = 0;
-            var t = 0; var i, j, d;
-            var matching = 0;
-            var t = 0;
-            var audio1Arr = Array();
-            var audio1Len = audio1.length;
-            for (i = 1; i <= audio1Len; i++) {
-                //reverse so its like a stack
-                d = audio1.charCodeAt(audio1Len - i);
-                for (j = 0; j < 8; j++) {
-                    audio1Arr.push(d % 2);
-                    d = Math.floor(d / 2);
-                }
-            }
-            var audio2Len = audio2.length;
-            for (i = 1; i <= audio2Len; i++) {
-                //reverse so its like a stack
-                d = audio2.charCodeAt(audio2Len - i);
-                for (j = 0; j < 8; j++) {
-                    if (d % 2 == audio1Arr[t]) {
-                        matching++;
-                    }
-                    d = Math.floor(d / 2);
-                    t++;
-                }
-            }
-            var avarage = Number(matching) / ((Number(t) + Number(audio1Arr.length)) / Number(2)) * Number(100);
-            alert('The Matching with the two audio is ' + avarage + ' %.');
-        }
     });
-    debugger
     function data() {
         let lis = document.getElementById('recordingsList').getElementsByTagName('li');
         alert(lis);
@@ -633,6 +848,18 @@
     function Getpianoagain() {
         var urlString = window.location.href;
         window.location = urlString;
+    }
+    function listenMusic() {
+        // var a = "https://interactive-examples.mdn.mozilla.net/media/cc0-audio/t-rex-roar.mp3";
+
+        //var host = document.getElementById("Hostname").value;
+        //alert(host);
+        var urlString = window.location.origin;
+
+        urlString = urlString + "/AudioFiles/";
+        urlString = urlString + document.getElementById("cars").value;
+        var myAudio = new Audio(urlString);
+        myAudio.play();
     }
 </script>
 

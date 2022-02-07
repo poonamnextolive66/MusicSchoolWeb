@@ -65,7 +65,7 @@
                 </div>
             </div>
             <div class="row text-center">
-                <a class="btn btn-primary" id="next">Next </a>
+                <a class="btn btn-primary"  href="/User/Play_Match_Pitch?lessonId=1&topicId=1"  id="next">Next </a>
             </div>
         </div>
     </div><!-- End Blog Page -->
@@ -90,6 +90,6 @@
 <script>
         function getTopic(lessonId, topicId) {
             $("#next").attr("href", "");
-            $("#next").attr("href", "/User/Play_Match_Pitch?lessonId=" + lessonId + "&topicId=" + topicId + "");
+            $("#next").attr("href", "/User/Piano/?lessonId=" + lessonId + "&topicId=" + topicId + "");
         }
 </script>

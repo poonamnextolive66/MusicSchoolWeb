@@ -315,25 +315,17 @@
     <Content Include="AudioFiles\test %282%29.wav" />
     <Content Include="AudioFiles\testing.wav" />
     <Content Include="bin\Antlr3.Runtime.dll" />
-    <Content Include="bin\Antlr3.Runtime.pdb" />
     <Content Include="bin\Bass.Net.dll" />
     <Content Include="bin\EO.Base.dll" />
-    <Content Include="bin\EO.Base.xml" />
     <Content Include="bin\EO.WebBrowser.dll" />
-    <Content Include="bin\EO.WebBrowser.xml" />
     <Content Include="bin\EO.WebEngine.dll" />
-    <Content Include="bin\EO.WebEngine.xml" />
     <Content Include="bin\ICSharpCode.AvalonEdit.dll" />
-    <Content Include="bin\ICSharpCode.AvalonEdit.xml" />
     <Content Include="bin\Microsoft.Bcl.AsyncInterfaces.dll" />
-    <Content Include="bin\Microsoft.Bcl.AsyncInterfaces.xml" />
     <Content Include="bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll" />
-    <Content Include="bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml" />
     <Content Include="bin\Microsoft.Web.Infrastructure.dll" />
     <Content Include="bin\MusicSchoolWeb.dll" />
     <Content Include="bin\MusicSchoolWeb.pdb" />
     <Content Include="bin\Newtonsoft.Json.dll" />
-    <Content Include="bin\Newtonsoft.Json.xml" />
     <Content Include="bin\NuGet.Frameworks.dll" />
     <Content Include="bin\Oracle.ManagedDataAccess.dll" />
     <Content Include="bin\PresentationFramework.dll" />
@@ -389,37 +381,21 @@
     <Content Include="bin\SoundFingerprinting.dll" />
     <Content Include="bin\SoundFingerprinting.Tests.dll" />
     <Content Include="bin\System.Buffers.dll" />
-    <Content Include="bin\System.Buffers.xml" />
     <Content Include="bin\System.Data.SqlClient.dll" />
-    <Content Include="bin\System.Data.SqlClient.xml" />
     <Content Include="bin\System.Memory.dll" />
-    <Content Include="bin\System.Memory.xml" />
     <Content Include="bin\System.Numerics.Vectors.dll" />
-    <Content Include="bin\System.Numerics.Vectors.xml" />
     <Content Include="bin\System.Runtime.CompilerServices.Unsafe.dll" />
-    <Content Include="bin\System.Runtime.CompilerServices.Unsafe.xml" />
     <Content Include="bin\System.Text.Encodings.Web.dll" />
-    <Content Include="bin\System.Text.Encodings.Web.xml" />
     <Content Include="bin\System.Text.Json.dll" />
-    <Content Include="bin\System.Text.Json.xml" />
     <Content Include="bin\System.Threading.Tasks.Extensions.dll" />
-    <Content Include="bin\System.Threading.Tasks.Extensions.xml" />
     <Content Include="bin\System.ValueTuple.dll" />
-    <Content Include="bin\System.ValueTuple.xml" />
     <Content Include="bin\System.Web.Helpers.dll" />
-    <Content Include="bin\System.Web.Helpers.xml" />
     <Content Include="bin\System.Web.Mvc.dll" />
-    <Content Include="bin\System.Web.Mvc.xml" />
     <Content Include="bin\System.Web.Optimization.dll" />
-    <Content Include="bin\System.Web.Optimization.xml" />
     <Content Include="bin\System.Web.Razor.dll" />
-    <Content Include="bin\System.Web.Razor.xml" />
     <Content Include="bin\System.Web.WebPages.Deployment.dll" />
-    <Content Include="bin\System.Web.WebPages.Deployment.xml" />
     <Content Include="bin\System.Web.WebPages.dll" />
     <Content Include="bin\System.Web.WebPages.Razor.dll" />
-    <Content Include="bin\System.Web.WebPages.Razor.xml" />
-    <Content Include="bin\System.Web.WebPages.xml" />
     <Content Include="bin\WebGrease.dll" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -524,6 +500,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="obj\" />
     <Folder Include="UploadAudio\" />
   </ItemGroup>
   <ItemGroup>

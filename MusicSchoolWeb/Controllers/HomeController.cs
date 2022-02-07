@@ -172,7 +172,7 @@ namespace MusicSchoolWeb.Controllers
                 var Hash_Value_Of_First_File = string.Empty;
                 var Hash_Value_Of_All_Files_One_By_One = string.Empty;
                 string OldFiles = string.Empty;
-                int counter = 0;
+               int counter = 0;
                 Hash_Value_Of_First_File = hash11;
                // byte[] mybyt = System.IO.File.ReadAllBytes(@"C:\Users\upkar\Downloads\testing.wav");
                 byte[] mybyt = System.IO.File.ReadAllBytes(Server.MapPath("~/AudioFiles/"+au2+""));
@@ -180,15 +180,17 @@ namespace MusicSchoolWeb.Controllers
                 if (Hash_Value_Of_First_File == Hash_Value_Of_All_Files_One_By_One)
                     {
                         counter = 1;
+                    msg = "true";
                     }
                 else
                 {
                     counter = 0;
+                    msg = "false";
                 }
                     //msg = "The Tune is Matched and Returned True. !";
                 // Code for Extracting Hash Value of all files present in the folder to match with the new one Ends
 
-                TempData["CompareMessage"] = counter;
+               // TempData["CompareMessage"] = counter;
             }
             return Json(new { msg });
         }

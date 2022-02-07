@@ -2426,3 +2426,133 @@ span.email-notes {
 		}
 }
 
+
+
+body {
+    height: auto;
+}
+
+
+.modal-body.add-audio-page {
+    margin-top: 120px;
+    margin-bottom: 30px;
+}
+
+    .modal-body.add-audio-page form {
+        max-width: 700px;
+        margin: 0 auto;
+        background: #fff;
+        box-shadow: 0 0 10px rgba(0,0,0,0.3);
+        border-radius: 5px;
+        padding: 20px;
+    }
+
+        .modal-body.add-audio-page form .form-group > label {
+            font-style: normal;
+            font-weight: normal;
+            font-size: 20px;
+            line-height: 17px;
+            align-items: center;
+            color: #425466;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .modal-body.add-audio-page form .input-group > div {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+            .modal-body.add-audio-page form .input-group > div select {
+                width: 100%;
+                display: block;
+                background: #EDF2F7;
+                border-radius: 6px;
+                border: 0;
+                outline: none;
+                color: #7A828A;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 15px;
+                line-height: 15px;
+                height: 55px;
+                padding: 0 20px;
+                margin-bottom: 20px;
+            }
+
+            .modal-body.add-audio-page form .input-group > div label {
+                font-style: normal;
+                font-weight: normal;
+                font-size: 14px;
+                line-height: 17px;
+                align-items: center;
+                color: #425466;
+                display: inline-block;
+                margin-bottom: 10px;
+            }
+
+
+            .modal-body.add-audio-page form .input-group > div input[type="submit"] {
+                background: #3ec1d5;
+                border: 0;
+            }
+
+.modal.fade.topics.in form label,
+.modal.fade.lesson.in form label {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    align-items: center;
+    color: #425466;
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
+.modal.fade.topics.in form .input-group > div,
+.modal.fade.lesson.in form .input-group > div {
+    width: 100%;
+}
+
+.modal.fade.topics.in form select,
+.modal.fade.topics.in form input:not(input[type="submit"]),
+.modal.fade.lesson.in form select,
+.modal.fade.lesson.in form input:not(input[type="submit"]) {
+    width: 100%;
+    display: block;
+    background: #EDF2F7;
+    border-radius: 6px;
+    border: 0;
+    outline: none;
+    color: #7A828A;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 15px;
+    height: 55px;
+    padding: 0 20px;
+}
+
+.modal.fade.topics.in form .input-group > div input#btnUpload,
+.modal.fade.lesson.in form .input-group > div input#btnUpload {
+    background-color: #3ec1d5;
+    width: 100px;
+    border: none;
+}
+
+.modal.fade.topics.in .modal-header:before,
+.modal.fade.topics.in .modal-header:after,
+.modal.fade.lesson.in .modal-header:before,
+.modal.fade.lesson.in .modal-header:after {
+    content: none;
+}
+
+@media(max-width:767px) {
+    .modal-body.add-audio-page {
+        margin-top: 80px;
+        margin-bottom: 30px;
+    }
+}
+
+
+

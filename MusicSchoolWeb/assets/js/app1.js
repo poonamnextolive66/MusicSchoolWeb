@@ -12,7 +12,7 @@ var audioContext //audio context to help us record
 
 var recordButton = document.getElementById("recordButton");
 var stopButton = document.getElementById("stopButton");
-//var pauseButton = document.getElementById("pauseButton");
+var compareButton = document.getElementById("compare");
 
 //add events to those 2 buttons
 recordButton.addEventListener("click", startRecording);
@@ -33,8 +33,8 @@ function startRecording() {
 	  Disable the record button until we get a success or fail from getUserMedia() 
   */
 
-	recordButton.disabled = true;
-	stopButton.disabled = false;
+	recordButton.hidden = true;
+	stopButton.hidden = false;
 	//pauseButton.disabled = false
 
 	/*
@@ -104,8 +104,11 @@ function stopRecording() {
 	console.log("stopButton clicked");
 	debugger
 	//disable the stop button, enable the record too allow for new recordings
-	stopButton.disabled = true;
-	recordButton.disabled = false;
+	//stopButton.disabled = true;
+	//recordButton.disabled = false;
+	recordButton.hidden = true;
+	stopButton.hidden = true;
+	compareButton.hidden = false;
 	//pauseButton.disabled = true;
 
 	//reset button just in case the recording is stopped while paused
@@ -172,6 +175,7 @@ function createDownloadLink(blob) {
 
 	//add the li element to the ol
 	recordingsList.appendChild(li);
+	//listenMusic();
 	for (let link of document.querySelectorAll('a[download]')) {
 		link.click();
 	}
