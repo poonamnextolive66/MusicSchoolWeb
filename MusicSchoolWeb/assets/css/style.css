@@ -2555,4 +2555,218 @@ body {
 }
 
 
+@media(max-width:767px) {
+    .modal-body.add-audio-page {
+        margin-top: 80px;
+        margin-bottom: 30px;
+    }
+}
+
+/*Old Changes*/
+
+details.details-example ul {
+    padding-left: 30px;
+}
+
+
+.slider-content {
+    padding: 80px 0;
+}
+
+
+
+.about-move {
+    min-height: 220px;
+}
+
+.blog-page.cat > div > .row > a {
+    width: auto;
+    min-width: 150px;
+    margin-left: 15px;
+}
+
+    .blog-page.cat > div > .row > a:focus {
+        box-shadow: none;
+    }
+
+/*New Changes*/
+
+
+#dataTable_paginate ul.pagination li a {
+    float: none;
+    display: inline-block;
+}
+
+#dataTable_paginate ul.pagination {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.section-headline.text-center {
+    margin-top: 40px;
+}
+
+.single-well > .row {
+    margin: 0 0 20px;
+}
+
+    .single-well > .row a {
+        display: inline-block;
+        width: auto;
+        background: #3ec1d5;
+        border: 0;
+        color: #fff;
+        align-self: center;
+        font-weight: 400;
+        line-height: 1.5;
+        padding: 5px 10px;
+        font-size: 16px;
+        border-radius: 0.25rem;
+        transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+        text-decoration: none;
+    }
+
+        .single-well > .row a:hover {
+            background: #4ac9dd;
+        }
+
+div#dataTable_wrapper {
+    background: #fff;
+    box-shadow: 0 0 10px rgb(0 0 0 / 15%);
+    border-radius: 5px;
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+
+.about-move {
+    background: #eff0ff !important;
+    box-shadow: 0 0 4px rgb(0 0 0 / 10%) !important;
+    border: 0 !important;
+    outline: none !important;
+    border-radius: 7px;
+    transition: all 0.4s ease;
+}
+
+.services-icon {
+    background: #54AAF9 !important;
+}
+
+.about-move h5 {
+    color: #625df5a6 !important;
+}
+
+.about-move:hover {
+    background: #54aaf959 !important;
+}
+
+    .about-move:hover .services-icon {
+        background: #eff0ff !important;
+        color: #625df5 !important;
+    }
+
+    .about-move:hover i {
+        color: #625df5a6 !important;
+    }
+
+.contact-icon {
+    margin-bottom: 40px;
+    background: #eff0ff !important;
+    box-shadow: 0 0 4px rgb(0 0 0 / 10%) !important;
+    border: 0 !important;
+    outline: none !important;
+    border-radius: 7px;
+    transition: all 0.4s ease;
+    padding: 20px;
+    min-height: 235px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+    .contact-icon .single-icon {
+        height: 100%;
+        width: 100%;
+    }
+
+    .contact-icon p, .contact-icon i {
+        color: #625df5a6;
+    }
+
+.row.text-center > a#next {
+    width: auto;
+    min-width: 100px;
+    outline: none;
+    box-shadow: none;
+}
+
+
+
+.row.text-center {
+    margin: 0;
+}
+
+.sub-category-table tr:hover {
+    background: #eff0ff !important;
+    color: #625df5f2 !important;
+}
+
+.sub-category-table tr {
+    transition: all 0.4s ease;
+}
+
+@media(max-width:991px) {
+    #dataTable_wrapper > .row:first-of-type,
+    #dataTable_wrapper > .row:last-of-type {
+        justify-content: space-between;
+    }
+
+        #dataTable_wrapper > .row:first-of-type > div,
+        #dataTable_wrapper > .row:last-of-type > div {
+            width: auto;
+        }
+
+        #dataTable_wrapper > .row:first-of-type:before,
+        #dataTable_wrapper > .row:last-of-type:before,
+        #dataTable_wrapper > .row:first-of-type:after,
+        #dataTable_wrapper > .row:last-of-type:after {
+            display: none;
+        }
+}
+
+
+@media(max-width:767px) {
+    div#dataTable_wrapper table {
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+    }
+
+    div#services .row.text-center > div {
+        width: 50%;
+    }
+
+    .blog-page.area-padding > .container > .row > div {
+        width: 100%;
+    }
+
+    .page-area .slider-content {
+        padding: 60px 0;
+    }
+
+    div#pricing > .container > .row:last-child > div {
+        width: 50%;
+    }
+}
+
+@media(max-width:575px) {
+    div#services .row.text-center > div {
+        width: 100%;
+    }
+
+    div#pricing > .container > .row:last-child > div {
+        width: 100%;
+    }
+}
+
+
 
