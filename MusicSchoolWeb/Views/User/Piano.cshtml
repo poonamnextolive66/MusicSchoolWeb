@@ -516,9 +516,9 @@
                     <button onclick="listenMusic()" value="Listen" id="listen_button">
                         Listen
                     </button>
-                    <button id="recordButton" style="background-color:#26b031">Play it Back</button>
-                    <button id="stopButton" hidden="hidden">Stop Recording</button>
-                    <button type="submit" id="compare" style="background: #40c540;" hidden="hidden"> Check Result</button>
+                    <button id="recordButton" style="background-color:#26b031;display:block !important;">Play it Back</button>
+                    <button id="stopButton" hidden="hidden" style="display:none !important">Stop Recording</button>
+                    <button type="submit" id="compare" style="background: #40c540;display:none !important;" hidden="hidden"> Check Result</button>
                 </div>
             </div>
         </div>
@@ -701,15 +701,14 @@
                                     alert(status);
                                 }
                             });
-
                         });
                         var files = event.target.files;
                         $("#src").attr("src", URL.createObjectURL(files[0]));
                         document.getElementById("audio").load();
                     }
-                    $("#recordButton").click(function () {
-                        $("#micdiv").show();
-                    });
+                    //$("#recordButton").click(function () {
+                    //    $("#micdiv").show();
+                    //});
                     $("#stopButton").click(function () {
                         $("#micdiv").hide();
                     });
@@ -733,6 +732,26 @@
                             }
                         });
                     });
+
+                    $("#recordButton").click(function () {
+                        $.ajax({
+                            type: "GET",
+                            url: "/User/recordButtonVisible",
+                            dataType: "json",
+                            success: function (response) {
+                                $("#micdiv").show();
+                                $("#micdiv").delay(response).fadeOut();
+                                const stopTriger = setTimeout(StopRecordTriger, response);
+                            },
+                            error: function (error) {
+                                $("#micdiv").hide();
+                            }
+                        });
+                    });
+                    function StopRecordTriger() {
+                        $("#stopButton").trigger("click");
+                        $("#compare").trigger("click");
+                    }
                 </script>
                 <script>
                     !function (d, s, id) {

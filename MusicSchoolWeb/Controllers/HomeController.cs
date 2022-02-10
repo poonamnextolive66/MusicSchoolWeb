@@ -159,40 +159,58 @@ namespace MusicSchoolWeb.Controllers
         [HttpPost]
         public JsonResult CompareAudio(string au1, string au2)
         {
-            string msg = string.Empty;
-            string FirstFile = au1;
-            au1 = au1.Replace("data:audio/wav;base64,", "");
-            string SecondFle = au2;
-            var bytes = Convert.FromBase64String(au1);
-            var contents = new StreamContent(new MemoryStream(bytes));
-            var hash11=GetHashSHA1(bytes);
-            if (FirstFile != null && SecondFle != null)
+            try
             {
-                string fileName = Path.GetFileName(FirstFile);
-                var Hash_Value_Of_First_File = string.Empty;
-                var Hash_Value_Of_All_Files_One_By_One = string.Empty;
-                string OldFiles = string.Empty;
-               int counter = 0;
-                Hash_Value_Of_First_File = hash11;
-               // byte[] mybyt = System.IO.File.ReadAllBytes(@"C:\Users\upkar\Downloads\testing.wav");
-                byte[] mybyt = System.IO.File.ReadAllBytes(Server.MapPath("~/AudioFiles/"+au2+""));
-                Hash_Value_Of_All_Files_One_By_One = GetHashSHA1(mybyt);
-                if (Hash_Value_Of_First_File == Hash_Value_Of_All_Files_One_By_One)
+                string msg = string.Empty;
+                int counter = 0;
+                if (au1 != null && au2 != null)
+                {
+                    string FirstFile = au1;
+                    au1 = au1.Replace("data:audio/wav;base64,", "");
+                    string SecondFle = au2;
+                    var bytes = Convert.FromBase64String(au1);
+                    var contents = new StreamContent(new MemoryStream(bytes));
+                    var hash11 = GetHashSHA1(bytes);
+                    if (FirstFile != null && SecondFle != null)
                     {
-                        counter = 1;
-                    msg = "true";
+                        string fileName = Path.GetFileName(FirstFile);
+                        var Hash_Value_Of_First_File = string.Empty;
+                        var Hash_Value_Of_All_Files_One_By_One = string.Empty;
+                        string OldFiles = string.Empty;
+                        Hash_Value_Of_First_File = hash11;
+                        // byte[] mybyt = System.IO.File.ReadAllBytes(@"C:\Users\upkar\Downloads\testing.wav");
+                        byte[] mybyt = System.IO.File.ReadAllBytes(Server.MapPath("~/AudioFiles/" + au2 + ""));
+                        Hash_Value_Of_All_Files_One_By_One = GetHashSHA1(mybyt);
+                        if (Hash_Value_Of_First_File == Hash_Value_Of_All_Files_One_By_One)
+                        {
+                            counter = 1;
+                            msg = "true";
+                        }
+                        else
+                        {
+                            counter = 0;
+                            msg = "false";
+                        }
+                        //msg = "The Tune is Matched and Returned True. !";
+                        // Code for Extracting Hash Value of all files present in the folder to match with the new one Ends
+
+                        // TempData["CompareMessage"] = counter;
                     }
+                }
                 else
                 {
+                   // TempData["CompareErrerMessage"] = "Please Recorde Your Audio !!";
                     counter = 0;
                     msg = "false";
                 }
-                    //msg = "The Tune is Matched and Returned True. !";
-                // Code for Extracting Hash Value of all files present in the folder to match with the new one Ends
-
-               // TempData["CompareMessage"] = counter;
+                return Json(new { msg });
             }
-            return Json(new { msg });
+            catch (Exception ex)
+            {
+                throw;
+            }
+
+
         }
         private static Stream GetStreamFromUrl(string url)
         {

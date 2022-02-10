@@ -8,7 +8,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using MusicSchoolWeb.Models;
-
+using NAudio.Wave;
 
 namespace MusicSchoolWeb.Controllers
 {
@@ -46,12 +46,31 @@ namespace MusicSchoolWeb.Controllers
         {
             return View();
         }
-        public ActionResult Piano(string lessonId,string topicId)
+        public ActionResult Piano(string lessonId, string topicId)
         {
-            List<Lesson> dt = manage.GetAudioSample(lessonId, topicId);
-            //FileInfo[] obj = ReadFiles();
-            ViewBag.song = dt;
-            return View();
+            try
+            {
+                if (lessonId != null && topicId != null)
+                {
+                    List<Lesson> dt = manage.GetAudioSample(lessonId, topicId);
+                    //FileInfo[] obj = ReadFiles();
+                    foreach (Lesson filename in dt)
+                    {
+                        var filePath = Server.MapPath("~/AudioFiles/");
+                        string[] filePaths = Directory.GetFiles(@filePath, filename.AudioFilename);
+                        TimeSpan duration = new Mp3FileReader(filePaths[0]).TotalTime;
+                        //Session["FileTimeDuretion"] = duration.TotalMilliseconds;
+                        TempData["AudioDuration"] = duration.TotalMilliseconds;
+                    }
+                    ViewBag.song = dt;
+
+                }
+                return View();
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
         }
         private FileInfo[] ReadFiles()
         {
@@ -86,6 +105,11 @@ namespace MusicSchoolWeb.Controllers
             }
             FileInfo[] fils = this.ReadFiles();
             return Json(files.Count + " Files Uploaded!");
+        }
+        public ActionResult recordButtonVisible()
+        {
+            var Duretion = TempData["AudioDuration"].ToString();
+            return Json(Duretion, JsonRequestBehavior.AllowGet);
         }
     }
 }
